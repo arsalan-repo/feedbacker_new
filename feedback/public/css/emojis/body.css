@@ -1,0 +1,9 @@
+#surveyBody {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+#surveyContent {
+    display: none !important;
+}

@@ -1,0 +1,16 @@
+Array
+(
+    [q] => ws/v1/create_encrypted
+)
+Array
+(
+    [feedback_files] => Array
+        (
+            [name] => working-draft.txt
+            [type] => 
+            [tmp_name] => /opt/bitnami/php/tmp/php7EYmiC
+            [error] => 0
+            [size] => 10
+        )
+
+)

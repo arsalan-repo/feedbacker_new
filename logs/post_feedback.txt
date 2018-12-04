@@ -1,0 +1,41 @@
+Array
+(
+    [q] => ws/v1/post_feedback
+    [privacy] => 0
+    [title] => feedbacker team
+    [user_id] => 27
+    [feedback] => 
+    [title_id] => 98
+)
+Array
+(
+    [feedback_files] => Array
+        (
+            [name] => Array
+                (
+                    [0] => IMG_4070.PNG
+                )
+
+            [type] => Array
+                (
+                    [0] => image/png
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => /opt/bitnami/php/tmp/phptmg9B2
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 634379
+                )
+
+        )
+
+)

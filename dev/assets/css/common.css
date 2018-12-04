@@ -1,0 +1,45 @@
+.titles-wrapper .notification-count{ background:#D82D33; color:#FFF; right:0;}
+/************************** User Profile Card **************/
+.profile-card-stats{clear:both; padding:16px 0;}
+.profile-card-stats ul li{display: table-cell;  padding: 0; width:1%;}
+.profile-card-stats .profile-card-stats-stat-link{    color: #1DA1F2 ;}
+.profile-card-stats .profile-card-stats-stat-link .profile-card-stats-stat-label{color: #657786;    font-size: 12px;    font-weight: bold;    letter-spacing: .02em;    line-height: 16px;    position:relative;   transition: color .15s ease-in-out;}
+.profile-card-stats .profile-card-stats-stat-link .profile-card-stats-stat-value{    display: block;    font-size: 18px;    font-weight: bold;    padding-top: 3px;    transition: color .15s ease-in-out;}
+.u-block{display: block;}
+.btn{	border: 1px solid;    border-radius: 2px;    box-sizing: content-box;    font-size: 12px;    -webkit-font-smoothing: antialiased;    font-weight: bold;    justify-content: center;    padding: 0 8px;    position: relative;    text-align: center;    text-shadow: none;    vertical-align: middle; line-height:22px;	}
+.btn-default{background-color: #f5f6f7; border-color: #ccd0d5; color: #4b4f56;}
+.btn-blue{  background-color: #29487d; border-color: #29487d; color: #fff;}
+#friends-wrapper .ui-tabs .ui-tabs-panel{border-width:1px !important;}
+.friends-data{margin-top:20px; border:none !important; }
+.friends-data .ui-widget-header{background:none !important; border:none !important; padding:0 !important;}
+
+#friends-wrapper .post-profile-content{width:40%;}
+#friends-wrapper .post-buttons{width:45%; float:left;text-align: right;    padding-top: 12px;}
+.friend-requests-list{width:100%; clear:both; overflow:hidden;}
+.friend-requests-list .friend-request{border:none; border-bottom:1px solid #d3d6d9; margin:0; border-radius:0;}
+.post-options-wrapper{width:100%; display:block; position:relative; height:20px;}
+.post-options-btn{    background-image: url(images/actions.png);
+    background-repeat: no-repeat; 
+	float:left;
+    background-size: auto;
+    background-position: -21px 0px;
+    height: 20px;
+    margin-top: 10px;
+    width: 20px;}
+.actions-bar{width:200px; height:auto;  background-clip: padding-box;   background-color: #fff;   border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 3px;   box-shadow: 0 3px 8px rgba(0, 0, 0, .3); position:absolute; right:0; top:65px; padding:10px 0; font-size:14px; z-index:10;
+}
+.actions-bar li{ overflow:hidden;}
+.actions-bar li a{display:block; color:#1d2129; padding:5px 10px;}
+.actions-bar li:hover{background-color:#4267b2; border-color:#29487d; color:#FFF;}
+.followings-items li{min-height:304px;}
+.followings-items .home-left-profile{border-radius:10px 10px 0 0;}
+.followings-items .profile-listing-img-thumb-block{padding-bottom:0; min-height:44px;}
+.followings-items li .profile-listing-img-thumb{width:48px; height:48px; margin-top:-24px;}
+.followings-items li .home-left-section{width:100%; padding-bottom:0;}
+.followings-items li .stats-box{width:100%; float:left; }
+.followings-items li .stats-box .listing-post-followers{float:left;}
+.followings-items li .stats-box .listing-post-profile-time{float:right;}
+.followings-items li .listing-post-name-block{padding:0 0 10px 0;}
+.frequests-count{right: 0;  top: -4px;}
+

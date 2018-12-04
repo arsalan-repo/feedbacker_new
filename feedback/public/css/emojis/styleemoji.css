@@ -1,0 +1,97 @@
+#branding {
+    text-align: center;
+    font-size: 11px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.mopinion-slide #branding {
+    font-size: 8px;
+}
+
+#branding .center-branding {
+    display: inline-block;
+    height: 32px;
+    box-sizing: border-box;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, .7);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(200%);
+    transform: translateY(200%);
+    -webkit-transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
+    transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
+}
+
+#branding.anim .center-branding {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.mopinion-slide #branding .center-branding {
+    height: 24px;
+}
+
+#branding span {
+    font-weight: 600;
+    color: #7b7b7b;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smooting: grayscale;
+}
+
+#branding .brand-text {
+    margin-right: 5px;
+    letter-spacing: 0.5px;
+}
+
+#branding .brand-logo span {
+    font-size: 14px;
+    color: #303031;
+    font-weight: 400;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-transition: all 0.3s 0.2s cubic-bezier(.25, .8, .25, 1);
+    transition: all 0.3s 0.2s cubic-bezier(.25, .8, .25, 1);
+    margin-left: 1px;
+}
+
+.mopinion-slide #branding .brand-logo span {
+    font-size: 11px;
+}
+
+#branding.anim .brand-logo span {
+    z-index: 2;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+#branding img {
+    width: 22px;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+    outline: 0;
+}
+
+.mopinion-slide #branding img {
+    width: 17px;
+}
+
+#branding a {
+    text-decoration: none;
+    border: 0;
+    outline: 0;
+}

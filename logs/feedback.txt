@@ -1,0 +1,49 @@
+Array
+(
+    [images] => Array
+        (
+            [name] => Array
+                (
+                    [0] => ef753a57-9d88-4961-91f1-083f8819d13f.jpg
+                    [1] => 523c31b1-1244-48fe-833f-950cd595f313.jpg
+                )
+
+            [type] => Array
+                (
+                    [0] => 
+                    [1] => 
+                )
+
+            [tmp_name] => Array
+                (
+                    [0] => /opt/bitnami/php/tmp/phpSu9xqT
+                    [1] => /opt/bitnami/php/tmp/phpzUKaf9
+                )
+
+            [error] => Array
+                (
+                    [0] => 0
+                    [1] => 0
+                )
+
+            [size] => Array
+                (
+                    [0] => 25501
+                    [1] => 36120
+                )
+
+        )
+
+)
+Array
+(
+    [q] => ws/v1/feedback
+    [title_id] => 2688
+    [upload] => true
+    [user_id] => 32
+    [feedback] => Feedbacker participation in SheTechs2018
+    [latitude] => 32.0748138
+    [country] => JO
+    [longitude] => 35.8845124
+    [location] => Abu Nseir,Amman,Amman Governorate,Jordan
+)

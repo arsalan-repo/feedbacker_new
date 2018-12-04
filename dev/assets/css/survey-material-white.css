@@ -1,0 +1,368 @@
+/**--------------------------**
+  Mopinion Surveys
+  Neutral template
+**---------------------------**/
+
+/**--------------------------**
+  @Color palette - Material white
+
+  Dark primary: #0288d1;
+  Primary: #03a9f4;
+  Light primary:#B3E5FC;
+  Accents: #607D8B;
+  Primary text:#212121;
+  Secondary text:#727272;
+  Divider color: #B6B6B6;
+
+  Red to green:
+  #e51c23
+  #ff5722
+  #ffeb3b
+  #8bc34a
+  #259b24
+**---------------------------**/
+/*@import url(//fonts.mopinion.com/css?family=Open+Sans);*/
+html .mopinion-survey-output.survey-material-white,
+.survey-material-white {
+  font-family: 'Open Sans','Helvetica Neue', sans-serif;
+}
+
+.survey-material-white #surveyHead {
+  background-color:#ffffff;
+  color:#727272;
+}
+
+#surveyBody .close-modal:before,
+#surveyBody .close-modal:after {
+  background:#727272;
+}
+
+.mopinion-survey-output.survey-material-white .block-title:after {
+  background:#B3E5FC;
+}
+
+.mopinion-survey-output.survey-material-white textarea,
+.mopinion-survey-output.survey-material-white input[type="text"],
+.mopinion-survey-output.survey-material-white input[type="password"],
+.mopinion-survey-output.survey-material-white input[type="datetime"],
+.mopinion-survey-output.survey-material-white input[type="datetime-local"],
+.mopinion-survey-output.survey-material-white input[type="date"],
+.mopinion-survey-output.survey-material-white input[type="month"],
+.mopinion-survey-output.survey-material-white input[type="time"],
+.mopinion-survey-output.survey-material-white input[type="week"],
+.mopinion-survey-output.survey-material-white input[type="number"],
+.mopinion-survey-output.survey-material-white input[type="email"],
+.mopinion-survey-output.survey-material-white input[type="url"],
+.mopinion-survey-output.survey-material-white input[type="search"],
+.mopinion-survey-output.survey-material-white input[type="tel"],
+.mopinion-survey-output.survey-material-white input[type="color"],
+.mopinion-survey-output.survey-material-white .uneditable-input {
+  background-color: #ffffff;
+}
+
+.mopinion-survey-output.survey-material-white textarea:focus,
+.mopinion-survey-output.survey-material-white input[type="text"]:focus,
+.mopinion-survey-output.survey-material-white input[type="password"]:focus,
+.mopinion-survey-output.survey-material-white input[type="datetime"]:focus,
+.mopinion-survey-output.survey-material-white input[type="datetime-local"]:focus,
+.mopinion-survey-output.survey-material-white input[type="date"]:focus,
+.mopinion-survey-output.survey-material-white input[type="month"]:focus,
+.mopinion-survey-output.survey-material-white input[type="time"]:focus,
+.mopinion-survey-output.survey-material-white input[type="week"]:focus,
+.mopinion-survey-output.survey-material-white input[type="number"]:focus,
+.mopinion-survey-output.survey-material-white input[type="email"]:focus,
+.mopinion-survey-output.survey-material-white input[type="url"]:focus,
+.mopinion-survey-output.survey-material-white input[type="search"]:focus,
+.mopinion-survey-output.survey-material-white input[type="tel"]:focus,
+.mopinion-survey-output.survey-material-white input[type="color"]:focus,
+.mopinion-survey-output.survey-material-white .uneditable-input:focus {
+  border-color:#03a9f4;
+  -webkit-box-shadow: 0 0 0 1px #03a9f4 ;
+  -moz-box-shadow: 0 0 0 1px #03a9f4 ;
+  box-shadow: 0 0 0 1px #03a9f4 ;
+}
+
+/*-- Progress bar --*/
+.mopinion-survey-output .progress.bar-layout {
+  background-color: #B3E5FC;
+}
+
+.mopinion-survey-output .progress .bar,
+.mopinion-survey-output .progress-wrap.active .progress-dot,
+.mopinion-survey-content .progress-wrap.completed .progress-dot:after {
+  background-color: #0288d1;
+}
+
+/**--- Buttons ---**/
+
+.mopinion-survey-output.survey-material-white .btn-primary,
+.mopinion-survey-output.survey-material-white .btn-next {
+  background-color: #00004b;
+  border: 1px solid #707371;
+  color:#fff;
+}
+
+.mopinion-survey-output.survey-material-white .btn-primary:hover,
+.mopinion-survey-output.survey-material-white .btn-primary:focus,
+.mopinion-survey-output.survey-material-white .btn-primary:active,
+.mopinion-survey-output.survey-material-white .btn-primary.active,
+.mopinion-survey-output.survey-material-white .btn-primary.disabled,
+.mopinion-survey-output.survey-material-white .btn-primary[disabled],
+.mopinion-survey-output.survey-material-white .btn-next:hover,
+.mopinion-survey-output.survey-material-white .btn-next:focus,
+.mopinion-survey-output.survey-material-white .btn-next:active,
+.mopinion-survey-output.survey-material-white .btn-next.active,
+.mopinion-survey-output.survey-material-white .btn-next.disabled,
+.mopinion-survey-output.survey-material-white .btn-next[disabled] {
+    background-color: #00004b;
+    border-color:#707371;
+    color:#fff;
+}
+
+.mopinion-survey-output.survey-material-white .btn-submit:before {
+  background:#0288d1;
+  color:#fff;
+}
+
+/*-- Controls --*/
+
+.mopinion-survey-output.survey-material-white input[type="radio"] + label:after {
+  color: #fff;
+  background: #03a9f4;
+}
+
+.mopinion-survey-output.survey-material-white input[type="radio"] + label:focus:after,
+.mopinion-survey-output.survey-material-white input[type="radio"] + label:active:after {
+  box-shadow:0 0 0px 20px #B3E5FC;
+  box-shadow:0 0 0px 20px rgba(179,229,252,.5);
+}
+
+.mopinion-survey-output.survey-material-white input[type="radio"]:checked + label:before {
+  border-color: #03a9f4;
+}
+
+.mopinion-survey-output.survey-material-white .radio-wrapper.button input[type="radio"] + label,
+.mopinion-survey-output.survey-material-white .radio-wrapper.button input[type="radio"] + label,
+.mopinion-survey-output.survey-material-white .category-wrapper.button input[type="radio"] + label,
+.mopinion-survey-output.survey-material-white .category-wrapper.button input[type="radio"] + label,
+.mopinion-survey-output.survey-material-white .gcr-wrapper.button input[type="radio"] + label,
+.mopinion-survey-output.survey-material-white .gcr-wrapper.button input[type="radio"] + label {
+  color:#727272;
+  background-color:#fff;
+}
+
+.mopinion-survey-output.survey-material-white .radio-wrapper.button input[type="radio"] + label:hover,
+.mopinion-survey-output.survey-material-white .radio-wrapper.button input[type="radio"] + label:hover,
+.mopinion-survey-output.survey-material-white .category-wrapper.button input[type="radio"] + label:hover,
+.mopinion-survey-output.survey-material-white .category-wrapper.button input[type="radio"] + label:hover,
+.mopinion-survey-output.survey-material-white .gcr-wrapper.button input[type="radio"] + label:hover,
+.mopinion-survey-output.survey-material-white .gcr-wrapper.button input[type="radio"] + label:hover  {
+  border-color:#03a9f4;
+}
+
+.mopinion-survey-output.survey-material-white .radio-wrapper.button input[type="radio"] + label:focus,
+.mopinion-survey-output.survey-material-white .radio-wrapper.button input[type="radio"] + label:active,
+.mopinion-survey-output.survey-material-white .category-wrapper.button input[type="radio"] + label:focus,
+.mopinion-survey-output.survey-material-white .category-wrapper.button input[type="radio"] + label:active,
+.mopinion-survey-output.survey-material-white .gcr-wrapper.button input[type="radio"] + label:focus,
+.mopinion-survey-output.survey-material-white .gcr-wrapper.button input[type="radio"] + label:active {
+  border-color:#03a9f4;
+  color:#03a9f4;
+}
+
+.mopinion-survey-output.survey-material-white .radio-wrapper.button input[type="radio"]:checked + label,
+.mopinion-survey-output.survey-material-white .radio-wrapper.button input[type="radio"]:checked + label,
+.mopinion-survey-output.survey-material-white .category-wrapper.button input[type="radio"]:checked + label,
+.mopinion-survey-output.survey-material-white .category-wrapper.button input[type="radio"]:checked + label,
+.mopinion-survey-output.survey-material-white .gcr-wrapper.button input[type="radio"]:checked + label,
+.mopinion-survey-output.survey-material-white .gcr-wrapper.button input[type="radio"]:checked + label  {
+  border-color:#03a9f4;
+  background-color:#03a9f4;
+  color:#fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+
+.mopinion-survey-output.survey-material-white input[type="checkbox"] + label:before {
+  background-color: #fff;
+}
+
+.mopinion-survey-output.survey-material-white input[type="checkbox"] + label:after {
+    color:#03a9f4;
+}
+
+.mopinion-survey-output.survey-material-white input[type="checkbox"] + label:focus:after,
+.mopinion-survey-output.survey-material-white input[type="checkbox"] + label:active:after {
+  box-shadow:0 0 0px 20px #B3E5FC;
+  box-shadow:0 0 0px 20px rgba(179,229,252,.5);
+  background: rgba(179,229,252,.5);
+}
+
+.mopinion-survey-output.survey-material-white input[type="checkbox"]:checked + label:before {
+  border-color: #03a9f4;
+ background-color: #03a9f4;
+}
+
+.mopinion-survey-output.survey-material-white input[type="checkbox"]:checked + label:after {
+  color:#fff;
+}
+
+.mopinion-survey-output.survey-material-white .checkbox-wrapper.button input[type="checkbox"] + label,
+.mopinion-survey-output.survey-material-white .checkbox-wrapper.button input[type="checkbox"] + label {
+  color:#727272;
+  background-color:#fff;
+}
+
+.mopinion-survey-output.survey-material-white .checkbox-wrapper.button input[type="checkbox"] + label:hover,
+.mopinion-survey-output.survey-material-white .checkbox-wrapper.button input[type="checkbox"] + label:hover {
+  border-color:#03a9f4;
+}
+
+.mopinion-survey-output.survey-material-white .checkbox-wrapper.button input[type="checkbox"] + label:focus,
+.mopinion-survey-output.survey-material-white .checkbox-wrapper.button input[type="checkbox"] + label:active {
+  border-color:#03a9f4;
+  color:#03a9f4;
+}
+
+.mopinion-survey-output.survey-material-white .checkbox-wrapper.button input[type="checkbox"]:checked + label,
+.mopinion-survey-output.survey-material-white .checkbox-wrapper.button input[type="checkbox"]:checked + label {
+  border-color:#03a9f4;
+  background-color: #03a9f4;
+  color:#fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.mopinion-survey-output.survey-material-white .nice-select .list {
+  color:#727272;
+}
+
+.mopinion-survey-output.survey-material-white .nice-select .option:hover,
+.mopinion-survey-output.survey-material-white .nice-select .option.focus,
+.mopinion-survey-output.survey-material-white .nice-select .option.selected.focus {
+  background-color: #B3E5FC;
+}
+
+.mopinion-survey-output.survey-material-white .nice-select .option.selected {
+  color:#212121;
+}
+
+/**--- Tables ---**/
+
+.mopinion-survey-output.survey-material-white .table th,
+.mopinion-survey-output.survey-material-white .table td {
+  border-top-color:  #b6b6b6;
+}
+
+.mopinion-survey-output.survey-material-white .table tbody + tbody {
+  border-top-color:  #B6B6B6;
+}
+
+.mopinion-survey-output.survey-material-white .table .table {
+  background-color: #ffffff;
+}
+
+.mopinion-survey-output.survey-material-white .table-bordered {
+  border-color: #B6B6B6;
+}
+
+.mopinion-survey-output.survey-material-white .table-bordered th,
+.mopinion-survey-output.survey-material-white .table-bordered td {
+  border-left-color: #B6B6B6;
+}
+
+.mopinion-survey-output.survey-material-white .table tbody tr:hover > td,
+.mopinion-survey-output.survey-material-white .table tbody tr:hover > th {
+  background-color: rgba(179,229,252,.2);
+}
+
+/*-- Tooltips --*/
+.mopinion-survey-output.survey-material-white a.tooltip {
+  color:#fff;
+  background: #b6b6b6;
+}
+.mopinion-survey-output.survey-material-white a.tooltip:hover {
+  border-color: #616161;
+  background: #616161;
+  color: #fff;
+}
+
+.mopinion-survey-output.survey-material-white a.tooltip span {
+  background: #000;
+  background:rgba(0,0,0,.7);
+  color: #fff;
+}
+
+.mopinion-survey-output.survey-material-white .rating-group label {
+  background: #fff;
+  color: #727272;
+}
+
+.mopinion-survey-output.survey-material-white .rating-group input[type="radio"]:hover + label {
+  background: #03a9f4;
+  border-color:#03a9f4;
+  color: #fff;
+}
+
+.mopinion-survey-output.survey-material-white .rating-group input[type="radio"]:checked + label {
+  background: #03a9f4;
+  border-color:#03a9f4;
+  color: #fff;
+}
+
+.mopinion-survey-output.survey-material-white .required-mark {
+  color: #607D8B;
+}
+
+/**--- Special tables ---**/
+
+/**-- Likert & Matrix --**/
+
+.mopinion-survey-output.survey-material-white .matrix-table td,
+.mopinion-survey-output.survey-material-white .likert-table td {
+  border-bottom-color: #B6B6B6;
+}
+
+.mopinion-survey-output.survey-material-white .matrix-table th.matrix-answer-label > div,
+.mopinion-survey-output.survey-material-white .likert-table th.likert-answer-label > div {
+  border-right-color:#b6b6b6;
+}
+
+/*-- Screen capture styles --*/
+
+#mopinion_dimmer_overlay.survey-material-white .dimmer-actions {
+  background:#fff;
+  color:#202021;
+}
+
+#mopinion_dimmer_overlay.survey-material-white .dimmer-cancel {
+  color:#202021;
+}
+
+#mopinion_dimmer_overlay.survey-material-white .dimmer-border {
+  border:3px solid #fff;
+}
+
+/*-- Slide-in button --*/
+#surveyWindowWrap .btn-open-slider.survey-material-white,
+.btn-open-survey.survey-material-white {
+    background-color: #03a9f4;
+    border: 1px solid #03a9f4;
+    color:#fff;
+}
+
+#surveyWindowWrap .btn-open-slider.survey-material-white:hover,
+#surveyWindowWrap .btn-open-slider.survey-material-white:focus,
+#surveyWindowWrap .btn-open-slider.survey-material-white:active,
+#surveyWindowWrap .btn-open-slider.survey-material-white.active,
+#surveyWindowWrap .btn-open-slider.survey-material-white.disabled,
+#surveyWindowWrap .btn-open-slider.survey-material-white[disabled],
+.mopinion-survey-content .btn-open-survey.survey-material-white:hover,
+.mopinion-survey-content .btn-open-survey.survey-material-white:focus,
+.mopinion-survey-content .btn-open-survey.survey-material-white:active,
+.mopinion-survey-content .btn-open-survey.survey-material-white.active,
+.mopinion-survey-content .btn-open-survey.survey-material-white.disabled,
+.mopinion-survey-content .btn-open-survey.survey-material-white[disabled] {
+    background-color: #0288d1;
+    border-color:#0288d1;
+    color:#fff;
+}
