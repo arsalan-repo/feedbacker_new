@@ -180,7 +180,7 @@ class Common extends CI_Model
                 return $friend['user_id'];
             }, $this->user_friends($item['user_id']));
 
-            if (!in_array($user_id, $friends) && $return['feedback_status'] == 'friends') {
+            if (!in_array($user_id, $friends) && $return['feedback_status'] == 'friends' && $item['user_id'] != $user_id) {
                 continue;
             }
 

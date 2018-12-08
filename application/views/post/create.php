@@ -307,6 +307,9 @@ jQuery(function () {
                     var $li = $('<li data-name="'+ui.item.name+'"><i class="fa fa-remove remove-friend"></i>'+ui.item.name+'<input type="hidden" name="tagged_friends[]" value="'+ui.item.user_id+'" /></li>');
                     $tags.append($li);
                     tagged_friends.push(ui.item.name);
+                    setTimeout(function () {
+                        $('#usersAutocompelte').val('');
+                    }, 100);
                     $('.remove-friend').click(function (e) {
                         e.preventDefault();
                         var $liname = $(this).parent();
@@ -314,8 +317,6 @@ jQuery(function () {
                         $liname.remove();
                         console.log(tagged_friends);
                     });
-                    console.log(tagged_friends);
-                    $('#usersAutocompelte').val('');
                 }else {
                     alert('Already exists');
                 }
