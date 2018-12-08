@@ -33,7 +33,7 @@
 							<span class="profile-card-stats-stat-label u-block">Followings</span>
 							<span class="profile-card-stats-stat-value followings_count" id="followings_count"><?=$this->common->user_following_count($user_info['id']); ?></span>
 						</a>
-					</li>					
+					</li>
 					<li>
 						<a class="profile-card-stats-stat-link " href="<?=site_url('user/friends'); ?>">
 							<span class="profile-card-stats-stat-label u-block">Friends

@@ -21,6 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="edit-feedback-btn-block"> 
 					<a href="javascript:void(0)" id="show-feedbacks" class="blue-btn" title="Feedbacks"><?php echo $this->lang->line('feedbacks'); ?></a> 
 					<a href="javascript:void(0)" id="show-followings" class="normal-btn" title="Followings"><?php echo $this->lang->line('followings'); ?></a>
+					<a href="javascript:void(0)" id="show-friends" class="normal-btn" title="Friends">Friends</a>
 				</div>
 			</div>
 		</div>
@@ -182,6 +183,7 @@ $(document).ready(function() {
 			element.html(data);
 			$('#show-followings').removeClass("blue-btn").addClass("normal-btn");
 			$('#show-feedbacks').removeClass("normal-btn").addClass("blue-btn");
+            $('#show-friends').removeClass("blue-btn").addClass("normal-btn");
 		});
 	});
 	
@@ -195,8 +197,23 @@ $(document).ready(function() {
 			element.html(data);
 			$('#show-feedbacks').removeClass("blue-btn").addClass("normal-btn");
 			$('#show-followings').removeClass("normal-btn").addClass("blue-btn");
+            $('#show-friends').removeClass("blue-btn").addClass("normal-btn");
 		});
 	});
+
+    $('#show-friends').click(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type:'POST',
+            url: '<?php echo site_url('user/showFriendsInProfile'); ?>'
+        }).done(function(data){
+            element.html(data);
+            $('#show-feedbacks').removeClass("blue-btn").addClass("normal-btn");
+            $('#show-friends').removeClass("normal-btn").addClass("blue-btn");
+            $('#show-followings').removeClass("blue-btn").addClass("normal-btn");
+        });
+    });
 	
 	$("#photo").change(function(){
 		console.log('heredf');

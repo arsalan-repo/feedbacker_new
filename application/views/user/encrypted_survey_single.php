@@ -109,21 +109,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							
 						<?php endif; ?>
 						<div class="clearfix" style="clear:both;"></div>
+                        <?php
+                        $correct_ans = json_decode($question['correct'], true);
+                        $ans = json_decode($answer, true);
+                        $is_ans_1 = !empty($ans) && in_array(1, array_intersect($correct_ans, $ans));
+                        $is_ans_1_selected = !empty($ans) && in_array(1, $ans);
+                        $is_ans_1_correct = !empty($ans) && in_array(1, $correct_ans);
+                        $is_ans_2 = !empty($ans) && in_array(2, array_intersect($correct_ans, $ans));
+                        $is_ans_2_selected = !empty($ans) && in_array(2, $ans);
+                        $is_ans_2_correct = !empty($ans) && in_array(2, $correct_ans);
+                        $is_ans_3 = !empty($ans) && in_array(3, array_intersect($correct_ans, $ans));
+                        $is_ans_3_selected = !empty($ans) && in_array(3, $ans);
+                        $is_ans_3_correct = !empty($ans) && in_array(3, $correct_ans);
+                        $is_ans_4 = !empty($ans) && in_array(4, array_intersect($correct_ans, $ans));
+                        $is_ans_4_selected = !empty($ans) && in_array(4, $ans);
+                        $is_ans_4_correct = !empty($ans) && in_array(4, $correct_ans);
+
+                        if(count($correct_ans) > 1){
+                        ?>
+                        <div class="question-options">
+                            <span class="question-option <?php if($is_ans_1 || $is_ans_1_correct) echo 'correct'; else if($is_ans_1_selected) echo 'wrong'; ?>"><input type="checkbox" name="answer[<?=$question['question_id']; ?>][]" value="1" <?php if($is_ans_1_selected) echo 'checked'; ?> <?php if($question['answered']) echo 'disabled'; ?>/><?=$question['first_p']; ?></span>
+                            <span class="question-option <?php if($is_ans_2 || $is_ans_2_correct) echo 'correct'; else if($is_ans_2_selected) echo 'wrong'; ?>"><input type="checkbox" name="answer[<?=$question['question_id']; ?>][]" value="2" <?php if($is_ans_2_selected) echo 'checked'; ?> <?php if($question['answered']) echo 'disabled'; ?>/><?=$question['second_p']; ?></span>
+                            <span class="question-option <?php if($is_ans_3 || $is_ans_3_correct) echo 'correct'; else if($is_ans_3_selected) echo 'wrong'; ?>"><input type="checkbox" name="answer[<?=$question['question_id']; ?>][]" value="3" <?php if($is_ans_3_selected) echo 'checked'; ?> <?php if($question['answered']) echo 'disabled'; ?>/><?=$question['third_p']; ?></span>
+                            <span class="question-option <?php if($is_ans_4 || $is_ans_4_correct) echo 'correct'; else if($is_ans_4_selected) echo 'wrong'; ?>"><input type="checkbox" name="answer[<?=$question['question_id']; ?>][]" value="4" <?php if($is_ans_4_selected) echo 'checked'; ?> <?php if($question['answered']) echo 'disabled'; ?>/><?=$question['fourth_p']; ?></span>
+                        </div>
+                        <?php }else {?>
 						<div class="question-options">
-							
 							<?php if(!empty($question['first_p'])): ?>
-								<span class="question-option <?php if(!empty($answer) && $question['correct']==1){ echo 'correct';} ?>  <?php if($answer==1 && !empty($question['correct'])){ echo ($question['correct']==1)? 'correct':'wrong'; } ?> " ><input type="radio" name="answer[<?=$question['question_id']; ?>]" value="1" <?php if($answer==1) echo 'checked'; ?> <?php if($question['answered']) echo 'disabled'; ?>><?=$question['first_p']; ?></span>
+								<span class="question-option <?php if(!empty($ans) && in_array(1, $correct_ans)){ echo 'correct';} ?>  <?php if(in_array(1, $ans) && !empty($correct_ans)){ echo (in_array(1, $correct_ans))? 'correct':'wrong'; } ?> " ><input type="radio" name="answer[<?=$question['question_id']; ?>][]" value="1" <?php if(in_array(1, $ans)) echo 'checked'; ?> <?php if($question['answered']) echo 'disabled'; ?>><?=$question['first_p']; ?></span>
 							<?php endif; ?>
 							<?php if(!empty($question['second_p'])): ?>
-								<span class="question-option <?php if(!empty($answer) && $question['correct']==2){ echo 'correct';} ?> <?php if($answer==2 && !empty($question['correct'])) echo ($question['correct']==2)? 'correct':'wrong'; ?> "><input type="radio" name="answer[<?=$question['question_id']; ?>]" value="2" <?php if($answer==2) echo 'checked'; ?> <?php if($question['answered']) echo 'disabled'; ?>><?=$question['second_p']; ?></span>
+								<span class="question-option <?php if(!empty($ans) && in_array(2, $correct_ans)){ echo 'correct';} ?> <?php if(in_array(2, $ans) && !empty($correct_ans)) echo (in_array(2, $correct_ans))? 'correct':'wrong'; ?> "><input type="radio" name="answer[<?=$question['question_id']; ?>][]" value="2" <?php if(in_array(2, $ans)) echo 'checked'; ?> <?php if($question['answered']) echo 'disabled'; ?>><?=$question['second_p']; ?></span>
 							<?php endif; ?>
 							<?php if(!empty($question['third_p'])): ?>
-								<span class="question-option <?php if(!empty($answer) && $question['correct']==3){ echo 'correct';} ?> <?php if($answer==3 && !empty($question['correct'])) echo ($question['correct']==3)? 'correct':'wrong'; ?> " ><input type="radio" name="answer[<?=$question['question_id']; ?>]" value="3" <?php if($answer==3) echo 'checked'; ?> <?php if($question['answered']) echo 'disabled'; ?>><?=$question['third_p']; ?></span>
+								<span class="question-option <?php if(!empty($ans) && in_array(3, $correct_ans)){ echo 'correct';} ?> <?php if(in_array(3, $ans) && !empty($correct_ans)) echo (in_array(3, $correct_ans))? 'correct':'wrong'; ?> " ><input type="radio" name="answer[<?=$question['question_id']; ?>][]" value="3" <?php if(in_array(3, $ans)) echo 'checked'; ?> <?php if($question['answered']) echo 'disabled'; ?>><?=$question['third_p']; ?></span>
 							<?php endif; ?>
 							<?php if(!empty($question['fourth_p'])): ?>
-								<span class="question-option <?php if(!empty($answer) && $question['correct']==4){ echo 'correct';} ?> <?php if($answer==4 && !empty($question['correct'])) echo ($question['correct']==4)? 'correct':'wrong'; ?> " ><input type="radio" name="answer[<?=$question['question_id']; ?>]" value="4" <?php if($answer==4) echo 'checked'; ?> <?php if($question['answered']) echo 'disabled'; ?>><?=$question['fourth_p']; ?></span>
+								<span class="question-option <?php if(!empty($ans) && in_array(4, $correct_ans)){ echo 'correct';} ?> <?php if(in_array(4, $ans) && !empty($correct_ans)) echo (in_array(4, $correct_ans))? 'correct':'wrong'; ?> " ><input type="radio" name="answer[<?=$question['question_id']; ?>][]" value="4" <?php if(in_array(4, $ans)) echo 'checked'; ?> <?php if($question['answered']) echo 'disabled'; ?>><?=$question['fourth_p']; ?></span>
 							<?php endif; ?>
 						</div>
+                        <?php } ?>
 					</div>
 					<?php endif; ?>
 				 <?php $question_count++; endforeach; ?>

@@ -400,7 +400,9 @@ class Post extends CI_Controller {
             $insert_array['location'] = $this->input->post('location');
             $insert_array['country'] = $this->user['country'];
             $insert_array['datetime'] = date('Y-m-d H:i:s');
-			
+			$insert_array['tagged_friends'] = json_encode($this->input->post('tagged_friends'));
+			$insert_array['feedback_status'] = $this->input->post('feedback_status');
+
             $insert_result = $this->common->insert_data_getid($insert_array, $tablename = 'feedback');
 			if(count($feedback_imges)>0){
 				foreach($feedback_imges as $img){
@@ -793,16 +795,17 @@ class Post extends CI_Controller {
                 $this->common->notification('', $this->user['id'], $title_id = '', $insert_result, $replied_to, 4);
 
                 $this->session->set_flashdata('success', '<p>'.$this->lang->line('success_reply_submit').'</p>');
-				redirect('post/detail/'.$replied_to);
+//				redirect('post/detail/'.$replied_to);
+                echo json_encode(array('message' => 'You have commented the post', 'status' => 1));
             } else {
 				$this->session->set_flashdata('error', '<p>'.$this->lang->line('error_reply_submit').'</p>');
-				redirect('post/detail/'.$replied_to);
+                echo json_encode(array('error_message' => 'An error occurred', 'status' => 0));
             }
 			//
 		}
 	}
 	
-	public function title($id) {		
+	public function title($id) {
 		// Trends
 		
 		$this->data['trends'] = $this->common->getTrends($this->user['country']);
@@ -830,14 +833,12 @@ class Post extends CI_Controller {
 		
 		$contition_array = array('feedback.title_id' => $id, 'feedback.deleted' => 0, 'feedback.status' => 1);
 		
-		$data = 'feedback_id, feedback.title_id, title, users.id as user_id, name, photo, feedback_cont, feedback_img, feedback_thumb, feedback_video, replied_to, location, feedback.datetime as time';
-		
+		$data = 'feedback_id, feedback.title_id, title, users.id as user_id, name, photo, feedback_cont, feedback_img, feedback_thumb, feedback_video, replied_to, location, feedback.datetime as time, is_hidden';
 		if (!empty($this->input->get("page"))) {
 			$page = ceil($this->input->get("page") - 1);
 			$start = ceil($page * $this->perPage);
 			
 			$feedback = $this->common->select_data_by_condition('feedback', $contition_array, $data, $sortby = 'feedback.datetime', $orderby = 'DESC', $this->perPage, $start, $join_str, $group_by = '');
-		
 			if(count($feedback) > 0) {
 				// Get Likes, Followings and Other details
 				$result = $this->common->getFeedbacks($feedback, $this->user['id']);
@@ -1051,10 +1052,74 @@ class Post extends CI_Controller {
 		$this->template->front_render('post/detail', $this->data);
 	}
 
-	public function share_post(){
+    public function share_post(){
         $session_data = $this->session->userdata['mec_user'];
-        $post_id = $this->uri->segemt(3);
-        var_dump($session_data);
+        $session_id = $session_data['id'];
+        if(isset($_POST['feedback_id']) && isset($_POST['title_id'])){
+            $post_id = $_POST['feedback_id'];
+            $title_id = $_POST['title_id'];
+            $data = array(
+                'user_id' => $session_id,
+                'feedback_id' => $post_id,
+                'title_id' => $title_id,
+            );
+            $this->common->insert('db_share_post', $data);
+            echo json_encode(array('message' => 'Post shared successfully', 'status' => 1));
+            die;
+        }
+        echo json_encode(array('error_message' => 'An error occurred', 'status' => 0));
+    }
+
+    public function delete_feedback_post(){
+        if(isset($_POST['feedback_id'])){
+            $feedback_id = $_POST['feedback_id'];
+
+            $data = array(
+              'feedback_id' => $feedback_id,
+            );
+
+            $this->common->delete('db_feedback', $data);
+            echo json_encode(array('message' => 'Feedback deleted successfully', 'status' => 1));
+            die;
+        }
+        echo json_encode(array('error_message' => 'An error occurred', 'status' => 0));
+    }
+
+//    public function edit_feedback_post(){
+//        if(isset($_POST['feedback_id'])){
+//            $feedback_id = $_POST['feedback_id'];
+//        }
+//    }
+
+    public function hide_feedback_post(){
+        if(isset($_POST['feedback_id']) && isset($_POST['is_hidden'])){
+            $feedback_id = $_POST['feedback_id'];
+            $is_hidden = $_POST['is_hidden'];
+            $where = array(
+                'feedback_id' => $feedback_id,
+            );
+            $data = array(
+                'is_hidden' => $is_hidden,
+            );
+            $this->common->update('db_feedback', $where, $data);
+            echo json_encode(array('message' => 'Success', 'status' => 1));
+            die;
+        }
+        echo json_encode(array('error_message' => 'Error', 'status' => 0));
+    }
+
+    public function report_feedback(){
+        if(isset($_POST['report_feedback_id']) && isset($_POST['report_title_id']) && isset($_POST['report_content'])){
+            $data = array(
+                'feedback_id' => $_POST['report_feedback_id'],
+                'title_id' => $_POST['report_title_id'],
+                'report_content' => $_POST['report_content'],
+            );
+            $this->common->insert('db_report_feedback', $data);
+            echo json_encode(array('message' => 'Reported Successfully', 'status' => 1));
+            die;
+        }
+        echo json_encode(array('error_message' => 'An error occurred', 'status' => 1));
     }
 	
 }

@@ -74,17 +74,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<?php endif; ?>
 						<div class="clearfix" style="clear:both;"></div>
 						<div class="question-options">
+                            <?php $correct = json_decode($question['correct'], true); ?>
 							<?php if(!empty($question['first_p'])): ?>
-								<span class="question-option <?php if(1==$question['correct']) echo 'correct'; ?>"  ><input type="radio" name="answer[<?=$question['question_id']; ?>]" value="<?=$question['first_p']; ?>"><?=$question['first_p']; ?></span>
+								<span class="question-option <?php if(in_array(1, $correct)) echo 'correct'; ?>"  ><input type="radio" name="answer[<?=$question['question_id']; ?>]" value="<?=$question['first_p']; ?>"><?=$question['first_p']; ?></span>
 							<?php endif; ?>
 							<?php if(!empty($question['second_p'])): ?>
-								<span class="question-option <?php if(2==$question['correct']) echo 'correct'; ?>"><input type="radio" name="answer[<?=$question['question_id']; ?>]" value="<?=$question['second_p']; ?>"><?=$question['second_p']; ?></span>
+								<span class="question-option <?php if(in_array(2, $correct)) echo 'correct'; ?>"><input type="radio" name="answer[<?=$question['question_id']; ?>]" value="<?=$question['second_p']; ?>"><?=$question['second_p']; ?></span>
 							<?php endif; ?>
 							<?php if(!empty($question['third_p'])): ?>
-								<span class="question-option <?php if(3==$question['correct']) echo 'correct'; ?>" ><input type="radio" name="answer[<?=$question['question_id']; ?>]" value="<?=$question['third_p']; ?>"><?=$question['third_p']; ?></span>
+								<span class="question-option <?php if(in_array(3, $correct)) echo 'correct'; ?>" ><input type="radio" name="answer[<?=$question['question_id']; ?>]" value="<?=$question['third_p']; ?>"><?=$question['third_p']; ?></span>
 							<?php endif; ?>
 							<?php if(!empty($question['fourth_p'])): ?>
-								<span class="question-option <?php if(4==$question['correct']) echo 'correct'; ?>" ><input type="radio" name="answer[<?=$question['question_id']; ?>]" value="<?=$question['fourth_p']; ?>"><?=$question['fourth_p']; ?></span>
+								<span class="question-option <?php if(in_array(4, $correct)) echo 'correct'; ?>" ><input type="radio" name="answer[<?=$question['question_id']; ?>]" value="<?=$question['fourth_p']; ?>"><?=$question['fourth_p']; ?></span>
 							<?php endif; ?>
 						</div>
 						
@@ -116,16 +117,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<label><?php echo $this->lang->line('option'); ?> 4</label>
 									<input type="text" name="fourth_p[<?=$question_count; ?>]">
 								</div>
-							</div>							
+							</div>
 							<label><?php echo $this->lang->line('correct_option'); ?></label>
-							<select name="correct[<?=$question_count; ?>]" class="input-select">
+							<select name="correct[<?=$question_count; ?>][]" class="input-select" multiple>
 								<option value=""><?php echo $this->lang->line('not_applicable'); ?></option>
 								<option value="1"><?php echo $this->lang->line('option'); ?> 1</option>
 								<option value="2"><?php echo $this->lang->line('option'); ?> 2</option>
 								<option value="3"><?php echo $this->lang->line('option'); ?> 3</option>
 								<option value="4"><?php echo $this->lang->line('option'); ?> 4</option>
 							</select>
-							
 							<div class="post-btn-block" style="clear:both;">
 								<div class="camera-map-icon">
 									<div class="camera-icon-block">
@@ -611,6 +611,12 @@ $(document).ready(function(){
                 $(fieldID).remove();
         });*/
     });   
+});
+
+
+// MultiSelect
+jQuery(document).ready(function() {
+    $('#survey_options').multiselect();
 });
 </script>
 

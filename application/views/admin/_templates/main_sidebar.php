@@ -56,6 +56,11 @@
 							<i class="fa fa-commenting"></i><span>Feedbacks</span>
 						</a>
 					</li>
+                    <li <?php if ($this->uri->segment(2) == 'feedbacks' && $this->uri->segment(3) == 'report_feedbacks') { ?> class="active" <?php } else { ?> class=""   <?php } ?>>
+                        <a href="<?php echo base_url('admin/feedbacks/report_feedbacks'); ?>">
+                            <i class="fa fa-file-archive-o"></i><span>Report Feedback</span>
+                        </a>
+                    </li>
 					<li <?php if ($this->uri->segment(2) == 'feedbacks' && $this->uri->segment(3) == 'trash') { ?> class="active" <?php } else { ?> class=""   <?php } ?>>
 						<a href="<?php echo base_url('admin/feedbacks/trash'); ?>">    
 							<i class="fa fa-trash"></i><span>Trash</span>

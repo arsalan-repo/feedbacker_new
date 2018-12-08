@@ -43,14 +43,14 @@ class Survey extends CI_Controller {
 	public function index() {		
 		$this->template->front_render('user/encrypted_titles');
 	}
-	public function submit(){		
-		if($this->input->post('slug')){	
+	public function submit(){
+		if($this->input->post('slug')){
 			$slug=$this->input->post('slug');
 			$title_id=$this->input->post('title_id');
 			$answer=$this->input->post('answer');
 			if(!empty($answer) && is_array($answer)){
 					foreach($answer as $question_id=>$ans){
-						$questions=$this->survey_model->add_question_answer($this->user['id'],$title_id,$question_id,$ans);
+						$questions=$this->survey_model->add_question_answer($this->user['id'],$title_id,$question_id,json_encode($ans));
 					}
 			}
 			redirect('encrypted/'.$title_id);
@@ -128,9 +128,8 @@ class Survey extends CI_Controller {
 						'third_p'=>$p3,
 						'fourth_p'=>$p4,
 						'user_id'=>$this->user['id'],
-						'correct'=>$correct_option
+						'correct'=>json_encode($correct_option),
 						);
-						
 						$question_id = $this->common->insert_data($insert_array, $tablename = 'questions');
 						$feedback_imges=array();
 						if (isset($question_images['name']) && count($question_images['name'])>0) {

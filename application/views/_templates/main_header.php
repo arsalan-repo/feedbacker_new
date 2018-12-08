@@ -376,6 +376,11 @@ $country=empty($user_country)? 'jo': strtolower($user_country);
 		<li><a href="<?php echo site_url('user/encrypted_titles'); ?>"><?php echo $this->lang->line('encrypted_titles'); ?></a></li> 
 		<!--<li><a href="<?php echo site_url('user/private_titles'); ?>">Private Titles</a></li> -->
        <li><a href="<?php echo site_url('user/profile'); ?>"><?php echo $this->lang->line('profile'); ?></a></li> 
+       <li><a href="<?php echo site_url('user/friends'); ?>">
+               Friend Requests
+               <span id="frequests-count" class="frequests-count notification-count"></span>
+           </a>
+       </li>
        <li><a href="<?php echo site_url('user/settings'); ?>"><?php echo $this->lang->line('settings'); ?></a></li>
        <li><a href="<?php echo site_url('user/logout'); ?>"><?php echo $this->lang->line('logout'); ?></a></li>
    </ul>

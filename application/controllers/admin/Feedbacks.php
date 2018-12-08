@@ -579,6 +579,17 @@ class Feedbacks extends MY_Controller {
         echo "Done all feedback indexing";die;
     }
 
+    public function report_feedbacks(){
+        $this->data['report_feedback'] = $this->common->fetch('db_report_feedback');
+        foreach ($this->data['report_feedback'] as $k => $v){
+            $title = $this->data['titles'] = $this->common->fetch('db_titles', array('title_id' => $v['title_id']));
+            $this->data['report_feedback'][$k]['feedback_title'] = (!empty($title) ? $title[0]['title'] : 'No Values');
+            $content = $this->data['feedback'] = $this->common->fetch('db_feedback', array('feedback_id' => $v['feedback_id']));
+            $this->data['report_feedback'][$k]['feedback_content'] = (!empty($content) ? $content[0]['feedback_cont'] : 'No Values');
+        }
+        $this->template->admin_render('admin/feedbacks/report_feedbacks', $this->data);
+    }
+
 }
 
 ?>

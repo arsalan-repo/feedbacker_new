@@ -1296,4 +1296,17 @@ class User extends CI_Controller {
 		$json['followings_count']=$followings_count;	
 		echo json_encode($json);
 	}
+
+    public function find_friends(){
+        $users=array();
+        if ($this->input->is_ajax_request()) {
+            $search_string = $this->input->get('term');
+            $user_id = $this->user['id'];
+            $friends=$this->common->user_find_friends($search_string,$user_id);
+            echo json_encode($friends);
+            die();
+        }
+        echo json_encode(array('0' => array('user_id' => '', 'name' => '','photo'=>'')));
+        die();
+    }
 }

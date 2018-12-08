@@ -37,9 +37,9 @@ class Encrypted extends CI_Controller {
 		$this->load->model('encrypted_model');
 		$this->load->model('survey_model');	
 		// Session data
-		
-		
-		// Load Language File		
+
+
+		// Load Language File
 		if ($this->user['language'] == 'ar') {
 			$this->lang->load('message','arabic');
 			$this->lang->load('label','arabic');
@@ -840,7 +840,7 @@ class Encrypted extends CI_Controller {
 			}
 		}		
 		$groups = $this->common->get_user_groups($this->user['id']);
-		$this->data['groups']=$groups;	
+		$this->data['groups']=$groups;
 		$this->data['module_name'] = 'Post';
         $this->data['section_title'] = 'Create Encrypted Title';		
 		/* Load Template */

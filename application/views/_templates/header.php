@@ -87,8 +87,11 @@ list($og_width, $og_height, $og_image_type, $of_attr) = getimagesize($meta['imag
 	<link href="<?php echo base_url().'assets/css/'.$style; ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo base_url().'assets/css/'.$responsive; ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo base_url().'assets/css/common.css' ?>" rel="stylesheet" type="text/css" />
-	<!-- jQuery 1.12.1 -->
-	
+
+    <!-- Bootstrap Multiselect -->
+    <link href="<?php echo base_url().'assets/css/bootstrap-multiselect.css' ?>" rel="stylesheet" type="text/css" />
+
+    <!-- jQuery 1.12.1 -->
 	<script src="<?php echo base_url().'assets/js/jquery-1.12.4.min.js';?>"></script>
 	
 	<!-- jQuery Validate -->
@@ -106,7 +109,9 @@ list($og_width, $og_height, $og_image_type, $of_attr) = getimagesize($meta['imag
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.full.js"></script>
 	<script src="<?php echo base_url().'assets/js/jquery.flexslider-min.js'; ?>"></script>
 	<script src="<?php echo base_url().'assets/js/multiple-emails.js'; ?>"></script>
-	
+    <!-- Bootstrap Multiselect -->
+    <script src="<?php echo base_url().'assets/js/bootstrap-multiselect.js'; ?>"></script>
+
 	<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet"/>
 	
 	<link href="https://cdn.datatables.net/select/1.2.5/css/select.dataTables.min.css" rel="stylesheet"/>
@@ -125,6 +130,13 @@ list($og_width, $og_height, $og_image_type, $of_attr) = getimagesize($meta['imag
 	<script src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.flash.min.js"></script>
 	<script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
 	<script src="<?=base_url('assets/js/sharetastic.js'); ?>"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.7/slimselect.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.18.7/slimselect.min.css" rel="stylesheet"></link>
+
+    <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyDdMQY2wOaHUnzHscBoqvNWmKDH4VUGUXQ'></script>
+    <!--    <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyDR38kxifNGwwZm_K7XgISwAB5qBkdPgnM'></script>-->
+    <script src="<?php echo base_url().'assets/js/locationpicker.jquery.js'; ?>"></script>
 
 	<script type="application/javascript">
 	$(document).ready(function(e) {		
@@ -156,6 +168,15 @@ list($og_width, $og_height, $og_image_type, $of_attr) = getimagesize($meta['imag
 					$('#notification-count').removeClass('show');
 				}
 				$('#notification-count').html(data.unread_count);
+                $('#frequests-count').html(data.friend_requests_count);
+                $('#friends_count').html(data.friends_count);
+                if(data.friend_requests_count>0){
+                    $('#frequests-count').addClass('show');
+                    $('#frequests-count').removeClass('hide');
+                }else{
+                    $('#frequests-count').addClass('hide');
+                    $('#frequests-count').removeClass('show');
+                }
 			});
 			
 		  }
