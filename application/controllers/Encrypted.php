@@ -763,7 +763,7 @@ class Encrypted extends CI_Controller {
 				$insert_array['title'] = $title;
 				$insert_array['slug'] = $slug;
 				$insert_array['is_survey'] = $is_survey;				
-				var_dump($insert_array);die;
+//				var_dump($insert_array);die;
 				$title_id = $this->common->insert_data($insert_array, $tablename = 'encrypted_titles');
 				$insert_array=array('title_id'=>$title_id,'user_id'=>$this->user['id'],'feedback_cont'=>$feedback_cont);
 				if(count($feedback_imges)>0){

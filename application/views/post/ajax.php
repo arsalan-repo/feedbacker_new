@@ -23,10 +23,10 @@ foreach ($feedbacks as $row) { ?>
             <i class="fa fa-caret-down dropdown" aria-hidden="true" style="float: right; cursor: pointer"></i>
             <ul class="dropdown_options" style="display: none">
                 <?php if (!empty($this->session->userdata['mec_user']['id']) && $row['user_id'] == $this->session->userdata['mec_user']['id']) { ?>
+                    <li><a href="#" class="hide_feedback_post"><i class="fa fa-eye-slash"></i> Hide</a></li>
                     <li><a href="<?= site_url('post/edit/' . $row['id']); ?>" data-action="edit" class="edit-option"><i class="fa fa-edit"></i> Edit</a></li>
                     <li><a href="#" class="delete_feedback_post"><i class="fa fa-ban"></i> Delete</a></li>
 <!--                    <li><a href="#" class="hide_feedback_post">--><?//= ($row['is_hidden'] == 0) ? 'Hide' : 'UnHide' ?><!--</a></li>-->
-<!--                    <li><a href="#" class="hide_feedback_post">Hide</a></li>-->
                 <?php } else { ?>
                     <li><a href="#" class="hide_title" data-titleid="<?= $row['title_id']; ?>"><i class="fa fa-eye-slash"></i> Hide This Title</a></li>
                     <li><a href="#" class="hide_all_user_feedbacks"><i class="fa fa-eye-slash"></i> Hide all feedbacks of <?= lcfirst($row['name']); ?> </a></li>

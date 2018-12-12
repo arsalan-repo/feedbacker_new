@@ -416,7 +416,7 @@ class Post extends CI_Controller {
             $insert_array['tagged_friends'] = json_encode($this->input->post('tagged_friends'));
             $insert_array['feedback_status'] = $this->input->post('feedback_status');
 
-            var_dump($insert_array);die;
+//            var_dump($insert_array);die;
             $insert_result = $this->common->insert_data_getid($insert_array, $tablename = 'feedback');
 
             if(count($feedback_imges)>0){
