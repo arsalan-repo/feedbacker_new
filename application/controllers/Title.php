@@ -123,5 +123,18 @@ class Title extends CI_Controller {
 			die();
 		}
     }
+
+    public function hide_title(){
+        if(isset($_POST['title_id']) && isset($_POST['session_id'])){
+            $data = array(
+              'session_id' => $_POST['session_id'],
+              'title_id' => $_POST['title_id']
+            );
+            $this->common->insert('db_hide_title', $data);
+            echo json_encode(array('message' => 'All feedbacks under this title are hidden', 'status' => 1));
+            die;
+        }
+        echo json_encode(array('error_message' => 'An error occurred', 'status' => 0));
+    }
 	
 }

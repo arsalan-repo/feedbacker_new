@@ -164,7 +164,25 @@ class Common extends CI_Model
         $return_array = array();
 
         foreach ($feedbacks as $item) {
-            if ($item['user_id'] != $user_id && $item['is_hidden'] == 1) {
+            if ($item['is_hidden'] == 1) {
+                continue;
+            }
+
+            $is_restricted = $this->common->fetch('db_restrict_user', array('session_id' => $user_id, 'user_id' => $item['user_id']));
+
+            if(!empty($is_restricted)){
+                continue;
+            }
+
+            $hidden_titles = $this->common->fetch('db_hide_title', array('session_id' => $user_id, 'title_id' => $item['title_id']));
+
+            if(!empty($hidden_titles)){
+                continue;
+            }
+
+            $hidden_user_feedbacks = $this->common->fetch('db_hide_all_user_feedbacks', array('session_id' => $user_id, 'user_id' => $item['user_id']));
+
+            if(!empty($hidden_user_feedbacks)){
                 continue;
             }
 
@@ -186,11 +204,17 @@ class Common extends CI_Model
 
             $return['tagged_friends'] = json_decode($item['tagged_friends'], true);
             $usernames = [];
+            $users_id = [];
             foreach ($return['tagged_friends'] as $k => $v) {
                 $user = $this->fetch('db_users', array('id' => $v));
+                $users_id[] = $user[0]['id'];
                 $usernames[] = $user[0]['name'];
             }
             $return['tagged_usernames'] = $usernames;
+            $return['tagged_ids'] = $users_id;
+            $return['tagged_friends'] = array_combine($return['tagged_ids'], $return['tagged_usernames']);
+
+
             $return['title'] = $item['title'];
             $feedback_images = $this->select_data_by_id('feedback_images', 'feedback_id', $item['feedback_id'], '*');
             $i = 0;

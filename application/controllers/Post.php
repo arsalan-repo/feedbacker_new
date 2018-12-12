@@ -170,124 +170,124 @@ class Post extends CI_Controller {
 			}
 		}
     }
-	
-	public function create() {
-		if(!isset($this->session->userdata['mec_user'])){
-			redirect('signin');
-		}
-		//check post and save data
-		
+
+    public function create() {
+        if(!isset($this->session->userdata['mec_user'])){
+            redirect('signin');
+        }
+        //check post and save data
+
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
-			
-			if(empty($_FILES['feedback_video']['name']) && !empty($_FILES['feedback_img']['type'])){
-				$i=0;
-				foreach($_FILES['feedback_img']['type'] as $type){
-					if(preg_match('/video\/*/',$type)){
-						$_FILES['feedback_video']['name']=$_FILES['feedback_img']['name'][$i];
-						$_FILES['feedback_video']['type']=$_FILES['feedback_img']['type'][$i];
-						$_FILES['feedback_video']['tmp_name']=$_FILES['feedback_img']['tmp_name'][$i];
-						$_FILES['feedback_video']['error']=$_FILES['feedback_img']['error'][$i];
-						$_FILES['feedback_video']['size']=$_FILES['feedback_img']['size'][$i];						
-					}
-					$i++;
-				}
-			}
-			
-			
-			
-			$this->form_validation->set_rules('title', 'Title', 'trim|required');
-			$this->form_validation->set_rules('feedback_cont', 'Feedback', 'trim|required');
-			
-			if ($this->form_validation->run() == FALSE) {
-				$this->session->set_flashdata('error', validation_errors());
-				redirect('post/create');
-			}
-			
+
+            if(empty($_FILES['feedback_video']['name']) && !empty($_FILES['feedback_img']['type'])){
+                $i=0;
+                foreach($_FILES['feedback_img']['type'] as $type){
+                    if(preg_match('/video\/*/',$type)){
+                        $_FILES['feedback_video']['name']=$_FILES['feedback_img']['name'][$i];
+                        $_FILES['feedback_video']['type']=$_FILES['feedback_img']['type'][$i];
+                        $_FILES['feedback_video']['tmp_name']=$_FILES['feedback_img']['tmp_name'][$i];
+                        $_FILES['feedback_video']['error']=$_FILES['feedback_img']['error'][$i];
+                        $_FILES['feedback_video']['size']=$_FILES['feedback_img']['size'][$i];
+                    }
+                    $i++;
+                }
+            }
+
+
+
+            $this->form_validation->set_rules('title', 'Title', 'trim|required');
+            $this->form_validation->set_rules('feedback_cont', 'Feedback', 'trim|required');
+
+            if ($this->form_validation->run() == FALSE) {
+                $this->session->set_flashdata('error', validation_errors());
+                redirect('post/create');
+            }
+
             $feedback_imges = array();
             $feedback_thumb = '';
             $feedback_video = '';
-			$feedback_pdf = '';			
-			$feedback_pdf_name = '';	
+            $feedback_pdf = '';
+            $feedback_pdf_name = '';
             if (isset($_FILES['feedback_img']['name']) && count($_FILES['feedback_img']['name'])>0) {
-				$cpt = count($_FILES['feedback_img']['name']);
-				$config['upload_path'] = $this->config->item('feedback_main_upload_path');
+                $cpt = count($_FILES['feedback_img']['name']);
+                $config['upload_path'] = $this->config->item('feedback_main_upload_path');
                 $config['thumb_upload_path'] = $this->config->item('feedback_thumb_upload_path');
                 $config['allowed_types'] = $this->config->item('feedback_allowed_types');
                 $config['max_size'] = $this->config->item('feedback_main_max_size');
                 $config['max_width'] = $this->config->item('feedback_main_max_width');
                 $config['max_height'] = $this->config->item('feedback_main_max_height');
-				$config['encrypt_name'] = TRUE;
-                
-				$files=$_FILES;
-				$this->load->library('upload');
-				$this->load->library('image_lib');
-				for($i=0; $i<$cpt; $i++){				
-					$_FILES['feedback_img']['name']= $files['feedback_img']['name'][$i];
-					$_FILES['feedback_img']['type']= $files['feedback_img']['type'][$i];
-					$_FILES['feedback_img']['tmp_name']= $files['feedback_img']['tmp_name'][$i];
-					$_FILES['feedback_img']['error']= $files['feedback_img']['error'][$i];
-					$_FILES['feedback_img']['size']= $files['feedback_img']['size'][$i];					
-					$this->upload->initialize($config);
-					if($this->upload->do_upload('feedback_img')){
-						$imgdata = $this->upload->data();						
-						$feedback_imges[$i]['image']=$imgdata['file_name'];
-						$thumb_file_path = str_replace("main", "thumbs", $imgdata['file_path']);
-						$thumb_file_name = $config['thumb_upload_path'] . $imgdata['raw_name'].'_thumb'.$imgdata['file_ext'];
-						
-						// Configuring Thumbnail 
-						$config_thumb['image_library'] = 'gd2';
-						$config_thumb['source_image'] = $config['upload_path'] . $imgdata['file_name'];
-						$config_thumb['new_image'] = $config['thumb_upload_path'] . $imgdata['file_name'];
-						$config_thumb['create_thumb'] = TRUE;
-						$config_thumb['maintain_ratio'] = TRUE;
-						$config_thumb['thumb_marker'] = '_thumb';
-						$config_thumb['width'] = $this->config->item('feedback_thumb_width');
-						$config_thumb['height'] = $this->config->item('feedback_thumb_height');
-						$this->image_lib->clear();
-						$this->image_lib->initialize($config_thumb);
-						// Creating Thumbnail
-						if($this->image_lib->resize()) {
-							$feedback_thumb = $imgdata['raw_name'].'_thumb'.$imgdata['file_ext'];
-							$feedback_imges[$i]['thumb']=$feedback_thumb;
-							if(file_exists($imgdata['full_path'])){
-								$this->s3->putObjectFile($imgdata['full_path'], S3_BUCKET, $config_thumb['source_image'], S3::ACL_PUBLIC_READ);
-								unlink($config_thumb['source_image']);
-							}
-							if(file_exists($thumb_file_path.$feedback_thumb)){
-								$this->s3->putObjectFile($thumb_file_path.$feedback_thumb, S3_BUCKET, $thumb_file_name, S3::ACL_PUBLIC_READ);								
-								unlink($thumb_file_name);								
-							}
-						}
-						
-					}
-					
-				}
-            }			
+                $config['encrypt_name'] = TRUE;
+
+                $files=$_FILES;
+                $this->load->library('upload');
+                $this->load->library('image_lib');
+                for($i=0; $i<$cpt; $i++){
+                    $_FILES['feedback_img']['name']= $files['feedback_img']['name'][$i];
+                    $_FILES['feedback_img']['type']= $files['feedback_img']['type'][$i];
+                    $_FILES['feedback_img']['tmp_name']= $files['feedback_img']['tmp_name'][$i];
+                    $_FILES['feedback_img']['error']= $files['feedback_img']['error'][$i];
+                    $_FILES['feedback_img']['size']= $files['feedback_img']['size'][$i];
+                    $this->upload->initialize($config);
+                    if($this->upload->do_upload('feedback_img')){
+                        $imgdata = $this->upload->data();
+                        $feedback_imges[$i]['image']=$imgdata['file_name'];
+                        $thumb_file_path = str_replace("main", "thumbs", $imgdata['file_path']);
+                        $thumb_file_name = $config['thumb_upload_path'] . $imgdata['raw_name'].'_thumb'.$imgdata['file_ext'];
+
+                        // Configuring Thumbnail
+                        $config_thumb['image_library'] = 'gd2';
+                        $config_thumb['source_image'] = $config['upload_path'] . $imgdata['file_name'];
+                        $config_thumb['new_image'] = $config['thumb_upload_path'] . $imgdata['file_name'];
+                        $config_thumb['create_thumb'] = TRUE;
+                        $config_thumb['maintain_ratio'] = TRUE;
+                        $config_thumb['thumb_marker'] = '_thumb';
+                        $config_thumb['width'] = $this->config->item('feedback_thumb_width');
+                        $config_thumb['height'] = $this->config->item('feedback_thumb_height');
+                        $this->image_lib->clear();
+                        $this->image_lib->initialize($config_thumb);
+                        // Creating Thumbnail
+                        if($this->image_lib->resize()) {
+                            $feedback_thumb = $imgdata['raw_name'].'_thumb'.$imgdata['file_ext'];
+                            $feedback_imges[$i]['thumb']=$feedback_thumb;
+                            if(file_exists($imgdata['full_path'])){
+                                $this->s3->putObjectFile($imgdata['full_path'], S3_BUCKET, $config_thumb['source_image'], S3::ACL_PUBLIC_READ);
+                                unlink($config_thumb['source_image']);
+                            }
+                            if(file_exists($thumb_file_path.$feedback_thumb)){
+                                $this->s3->putObjectFile($thumb_file_path.$feedback_thumb, S3_BUCKET, $thumb_file_name, S3::ACL_PUBLIC_READ);
+                                unlink($thumb_file_name);
+                            }
+                        }
+
+                    }
+
+                }
+            }
             // Image Upload End
-            
+
             // Video Upload Start
             if (!empty($_FILES['feedback_video']['name'])) {
-				
+
                 $config_video['upload_path'] = $this->config->item('feedback_video_upload_path');
                 $config_video['thumb_upload_path'] = $this->config->item('feedback_thumb_upload_path');
                 $config_video['max_size'] = $this->config->item('feedback_video_max_size');
                 $config_video['allowed_types'] = $this->config->item('feedback_allowed_video_types');
                 $config_video['overwrite'] = FALSE;
                 $config_video['remove_spaces'] = TRUE;
-                $config_video['file_name'] = time();    
-                    
+                $config_video['file_name'] = time();
+
                 $this->load->library('upload', $config_video);
                 $this->upload->initialize($config_video);
-              
+
                 if (!$this->upload->do_upload('feedback_video')) {
                     $error = $this->upload->display_errors();
-					$this->session->set_flashdata('error', strip_tags($error));
-					redirect('post/create');
+                    $this->session->set_flashdata('error', strip_tags($error));
+                    redirect('post/create');
                 } else {
                     $video_details = $this->upload->data();
-					$feedback_video = $video_details['file_name'];
-					
-                
+                    $feedback_video = $video_details['file_name'];
+
+
                     // Generate video thumbnail
                     $video_path = $video_details['full_path'];
                     $thumb_name = $video_details['raw_name']."_video.jpg";
@@ -295,10 +295,10 @@ class Post extends CI_Controller {
 
                     shell_exec("ffmpeg -itsoffset -3 -i ".$video_path."  -y -an -f image2 -s 400x270 ".$thumb_path."");
                     $feedback_thumb = $thumb_name;
-                    
+
                     // AWS S3 Upload
                     $thumb_file_path = str_replace("video", "thumbs", $video_details['file_path']);
-                    
+
                     $this->s3->putObjectFile($video_details['full_path'], S3_BUCKET, $config_video['upload_path'].$video_details['file_name'], S3::ACL_PUBLIC_READ);
                     $this->s3->putObjectFile($thumb_file_path.$feedback_thumb, S3_BUCKET, $thumb_path, S3::ACL_PUBLIC_READ);
 
@@ -306,78 +306,91 @@ class Post extends CI_Controller {
                     unlink($config_video['upload_path'].$video_details['file_name']);
                     unlink($thumb_path);
                 }
-				
+
             }
-		
+
             // Video Upload End
-			 if (isset($_FILES['feedback_pdf']['name']) && $_FILES['feedback_pdf']['name'] != '') {
+            if (!empty($_FILES['feedback_pdf']['name'])) {
                 $config_pdf['upload_path'] = $this->config->item('feedback_pdf_upload_path');
                 $config_pdf['max_size'] = $this->config->item('feedback_pdf_max_size');
                 $config_pdf['allowed_types'] = $this->config->item('feedback_allowed_pdf_types');
                 $config_pdf['overwrite'] = FALSE;
                 $config_pdf['remove_spaces'] = TRUE;
-                $config_pdf['file_name'] = time();    
-                    
+                $config_pdf['file_name'] = time();
+
                 $this->load->library('upload', $config_pdf);
                 $this->upload->initialize($config_pdf);
-                
+
                 if (!$this->upload->do_upload('feedback_pdf')) {
-                   $error = $this->upload->display_errors();
-					$this->session->set_flashdata('error', strip_tags($error));
-					var_dump($error);
-					//redirect('post/create');
+                    $error = $this->upload->display_errors();
+                    $this->session->set_flashdata('error', strip_tags($error));
+                    var_dump($error);
+                    //redirect('post/create');
                 } else {
                     $pdf_details = $this->upload->data();
-					$feedback_pdf = $pdf_details['file_name'];
-					$feedback_pdf_name=$_FILES['feedback_pdf']['name'];
-/*                  if($video_details['file_ext'] == ".mov" || $video_details['file_ext'] == ".MOV") {
-                        // ffmpeg command to convert video
-                        shell_exec("ffmpeg -i ".$video_details['full_path']." ".$video_details['file_path'].$video_details['raw_name'].".mp4");
-                    
-                        /// In the end update video name in DB
-                        $feedback_video = $video_details['raw_name'].'.'.'mp4';
-                    }*/
-                    
+                    $feedback_pdf = $pdf_details['file_name'];
+                    $feedback_pdf_name=$_FILES['feedback_pdf']['name'];
+
                     // Generate video thumbnail
-                    $pdf_path = $pdf_details['full_path'];               
-                    
+                    $pdf_path = $pdf_details['full_path'];
+
                     $this->s3->putObjectFile($pdf_details['full_path'], S3_BUCKET, $config_pdf['upload_path'].$pdf_details['file_name'], S3::ACL_PUBLIC_READ);
-					unlink($config_pdf['upload_path'].$pdf_details['file_name']);
-                    
+                    unlink($config_pdf['upload_path'].$pdf_details['file_name']);
+
                 }
             }
             // Check / Add Title
-			$title = trim($this->input->post('title'));			
-			
-			$contition_array = array('title' => $title);
-			$check_title = $this->common->select_data_by_condition('titles', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $group_by='');
-			
-			if(count($check_title) > 0) {
-				// Restore If deleted
-				$update_data = array('deleted' => 0);
-				$update_result = $this->common->update_data($update_data, 'titles', 'title_id', $check_title[0]['title_id']);
-	
-				$insert_array['title_id'] = $check_title[0]['title_id'];
-				$title_id=$check_title[0]['title_id'];
-			} else {
-				$insert_result = $this->common->insert_data_getid(array('title' => $title), $tablename = 'titles');
-				$title_id=$insert_result;			
-				
-				$follow_array['user_id'] = $this->user['id'];
-				$follow_array['title_id'] = $insert_result;				
-				$auto_follow = $this->common->insert_data($follow_array, $tablename = 'followings');		
-				$insert_array['title_id'] = $insert_result;
-			}            
-			$insert_array['user_id'] = $this->user['id'];
-			$str_feedback=trim(json_encode($this->input->post('feedback_cont')),'"');
-			$str_feedback=str_replace("\r\n","",$str_feedback);
+            $title = trim($this->input->post('title'));
+            $files_json = $this->input->post('files_json');
+            $friend_list = $this->input->post('friend_list');
+
+            $contition_array = array('title' => $title);
+            $check_title = $this->common->select_data_by_condition('titles', $contition_array, $data = '*', $sortby = '', $orderby = '', $limit = '', $offset = '', $join_str = array(), $group_by='');
+
+            if(count($check_title) > 0) {
+                // Restore If deleted
+                $update_data = array('deleted' => 0);
+                $update_result = $this->common->update_data($update_data, 'titles', 'title_id', $check_title[0]['title_id']);
+
+                $insert_array['title_id'] = $check_title[0]['title_id'];
+                $title_id=$check_title[0]['title_id'];
+            } else {
+                $insert_result = $this->common->insert_data_getid(array('title' => $title,'user_id'=>$this->user['id']), $tablename = 'titles');
+                $title_id=$insert_result;
+
+                $follow_array['user_id'] = $this->user['id'];
+                $follow_array['title_id'] = $insert_result;
+                $auto_follow = $this->common->insert_data($follow_array, $tablename = 'followings');
+                $insert_array['title_id'] = $insert_result;
+            }
+            $insert_array['user_id'] = $this->user['id'];
+            $str_feedback=trim(json_encode($this->input->post('feedback_cont')),'"');
+            $str_feedback=str_replace("\r\n","",$str_feedback);
             $insert_array['feedback_cont'] = $this->emoji->Encode($str_feedback);
-		
-			 
-			if(count($feedback_imges)>0){
-				 $insert_array['feedback_img'] = $feedback_imges[0]['image'];	
-				 $insert_array['feedback_thumb'] = $feedback_imges[0]['thumb'];
-			}
+            print_r($_POST);;
+            if(!empty($files_json) && is_array($files_json)){
+                foreach($files_json as $file){
+                    $fileObj=json_decode($file);
+                    if($fileObj->type=='image'){
+                        $feedback_imges[]=array('image'=>$fileObj->file_name,'thumb'=>$fileObj->thumb_name);
+                    }
+                    if($fileObj->type=='video'){
+                        $feedback_thumb=$fileObj->thumb_name;
+                        $feedback_video=$fileObj->file_name;
+                    }
+                    if($fileObj->type=='pdf'){
+                        $feedback_pdf=$fileObj->file_name;
+                        $feedback_pdf_name=$fileObj->name;
+                    }
+                }
+            }
+            if(!empty($friend_list) && is_array($friend_list)){
+                $insert_array['tagged']=serialize($friend_list);
+            }
+            if(count($feedback_imges)>0){
+                $insert_array['feedback_img'] = $feedback_imges[0]['image'];
+                $insert_array['feedback_thumb'] = $feedback_imges[0]['thumb'];
+            }
             /*if($feedback_img != '') {
                 $insert_array['feedback_img'] = $feedback_img;
             }
@@ -388,54 +401,56 @@ class Post extends CI_Controller {
             if(!empty($feedback_video)) {
                 $insert_array['feedback_video'] = $feedback_video;
             }
-			if($feedback_pdf != '') {
+            if($feedback_pdf != '') {
                 $insert_array['feedback_pdf'] = $feedback_pdf;
             }
-			if($feedback_pdf_name != '') {
+            if($feedback_pdf_name != '') {
                 $insert_array['feedback_pdf_name'] = $feedback_pdf_name;
             }
-			
+
             $insert_array['latitude'] = $this->input->post('latitude');
             $insert_array['longitude'] = $this->input->post('longitude');
             $insert_array['location'] = $this->input->post('location');
             $insert_array['country'] = $this->user['country'];
             $insert_array['datetime'] = date('Y-m-d H:i:s');
-			$insert_array['tagged_friends'] = json_encode($this->input->post('tagged_friends'));
-			$insert_array['feedback_status'] = $this->input->post('feedback_status');
+            $insert_array['tagged_friends'] = json_encode($this->input->post('tagged_friends'));
+            $insert_array['feedback_status'] = $this->input->post('feedback_status');
 
+            var_dump($insert_array);die;
             $insert_result = $this->common->insert_data_getid($insert_array, $tablename = 'feedback');
-			if(count($feedback_imges)>0){
-				foreach($feedback_imges as $img){
-					$insarr=array('feedback_id'=>$insert_result,
-					'feedback_img'=>$img['image'],
-					'feedback_thumb'=>$img['thumb']);
-					$img_id=$this->common->insert_data_getid($insarr, $tablename = 'feedback_images');
-				}
-			}
-            
+
+            if(count($feedback_imges)>0){
+                foreach($feedback_imges as $img){
+                    $insarr=array('feedback_id'=>$insert_result,
+                        'feedback_img'=>$img['image'],
+                        'feedback_thumb'=>$img['thumb']);
+                    $img_id=$this->common->insert_data_getid($insarr, $tablename = 'feedback_images');
+                }
+            }
+
             $insert_array['feedback_id'] = $insert_result;
 
-           
+
 
             if ($insert_result) {
                 // Check / Add Notification for users
                 $this->common->notification('', $this->user['id'], $title_id, $insert_result, $replied_to = '', 2);
-
                 $this->session->set_flashdata('success', '<p>'.$this->lang->line('success_feedback_submit').'</p>');
-				redirect('user/dashboard');
+                redirect('user/dashboard');
             } else {
-				$this->session->set_flashdata('error', '<p>'.$this->lang->line('error_feedback_submit').'</p>');
-				redirect('post/create');
+                $this->session->set_flashdata('error', '<p>'.$this->lang->line('error_feedback_submit').'</p>');
+                redirect('post/create');
             }
-			//
-		}
-		
-		$this->data['module_name'] = 'Post';
+            //
+        }
+
+        $this->data['module_name'] = 'Post';
         $this->data['section_title'] = 'Create Post';
-		
-		/* Load Template */
-		$this->template->front_render('post/create', $this->data);
-	}
+
+        /* Load Template */
+        $this->template->front_render('post/create', $this->data);
+    }
+
 	public function edit($id){
 		if(!isset($this->session->userdata['mec_user'])){
 			redirect('signin');
@@ -497,7 +512,12 @@ class Post extends CI_Controller {
 				}
             }
 			$update_array = array(
-				'feedback_cont' => trim($this->input->post('feedback_cont'))
+				'feedback_cont' => trim($this->input->post('feedback_cont')),
+                'feedback_status' => trim($this->input->post('feedback_status')),
+                'tagged_friends' => json_encode($this->input->post('tagged_friends')),
+				'location' => trim($this->input->post('location')),
+				'longitude' => trim($this->input->post('longitude')),
+				'latitude' => trim($this->input->post('latitude')),
             );
 			if(count($feedback_imges)>0){
 				 $update_array['feedback_img'] = $feedback_imges[0]['image'];	
@@ -551,9 +571,14 @@ class Post extends CI_Controller {
         $this->data['section_title'] = 'Edit Feedback';
 		$feedback_detail = $this->common->select_data_by_id('feedback', 'feedback_id', $id, '*');
 		$feedback_images = $this->common->select_data_by_id('feedback_images', 'feedback_id', $id, '*');
-		
+
+
 		$feedback_detail[0]['images']=$feedback_images;
 		$this->data['feedback_detail'] = $feedback_detail;
+        $tagged_friends = json_decode($this->data['feedback_detail'][0]['tagged_friends']);
+        foreach ($tagged_friends as $v){
+            $this->data['friends_details'][] = $this->common->fetch('db_users', array('id' => $v))[0];
+        }
 		$this->template->front_render('post/edit', $this->data);
 	}
 	public function reply() {
@@ -1119,7 +1144,19 @@ class Post extends CI_Controller {
             echo json_encode(array('message' => 'Reported Successfully', 'status' => 1));
             die;
         }
-        echo json_encode(array('error_message' => 'An error occurred', 'status' => 1));
+        echo json_encode(array('error_message' => 'An error occurred', 'status' => 0));
     }
-	
+
+    public function hide_all_user_feedbacks(){
+        if(isset($_POST['session_id']) && isset($_POST['user_id'])){
+            $data = array(
+                'session_id' => $_POST['session_id'],
+                'user_id' => $_POST['user_id'],
+            );
+            $this->common->insert('db_hide_all_user_feedbacks', $data);
+            echo json_encode(array('message' => 'All feedbacks of this user are hidden', 'status' => 1));
+            die;
+        }
+        echo json_encode(array('error_message' => 'An error occurred', 'status' => 0));
+    }
 }

@@ -47,23 +47,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
       </div>
       <div class="middle-content">
-        <div class="middle-content-block ">	
-		
+        <div class="middle-content-block ">
+            <?php $this->load->view('parts/create-title-widget'); ?>
           <?php  if (!empty($titles)) { ?>
-			<div class="search-form post-profile-block">
-				<form role="form" method="post" action="">
-					<h3><?php echo $this->lang->line('search_title'); ?></h3>
-					<div class="form-group">
-						<input type="text" placeholder="<?php echo $this->lang->line('type_in_to_search'); ?>" name="s" id="s" required="true" class="ui-autocomplete-input" autocomplete="off" aria-required="true" value="<?=$s; ?>">
-						<input type="submit" value="<?php echo $this->lang->line('search'); ?>" name="search" style="width:160px; float:right;">		
-					</div>
-				</form>
-			</div>
-			<?php if($is_search): ?>
-				<div class="search-form post-profile-block">
-					<h2 style="padding:15px 0;">Displaying search results for "<span style="color:#ea9707;"><?=$s; ?></span>"</h2>
-				</div>
-			<?php endif; ?>
+<!--			<div class="search-form post-profile-block">-->
+<!--				<form role="form" method="post" action="">-->
+<!--					<h3>--><?php //echo $this->lang->line('search_title'); ?><!--</h3>-->
+<!--					<div class="form-group">-->
+<!--						<input type="text" placeholder="--><?php //echo $this->lang->line('type_in_to_search'); ?><!--" name="s" id="s" required="true" class="ui-autocomplete-input" autocomplete="off" aria-required="true" value="--><?//=$s; ?><!--">-->
+<!--						<input type="submit" value="--><?php //echo $this->lang->line('search'); ?><!--" name="search" style="width:160px; float:right;">		-->
+<!--					</div>-->
+<!--				</form>-->
+<!--			</div>-->
+<!--			--><?php //if($is_search): ?>
+<!--				<div class="search-form post-profile-block">-->
+<!--					<h2 style="padding:15px 0;">Displaying search results for "<span style="color:#ea9707;">--><?//=$s; ?><!--</span>"</h2>-->
+<!--				</div>-->
+<!--			--><?php //endif; ?>
 			<div class="titles-wrapper" id="post-data" style="width:100%; float:left;">
 			<?php foreach($titles as $title):  ?>
 			<?php if(!empty($title['ads'])):  //print_r($title);?>
@@ -132,35 +132,81 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
       </div>
       <div class="right-content">
-		<div class="header-create-encrypted text-center" style="width:100%; margin:20px auto;">
-			<a href="<?php echo site_url('encrypted/create'); ?>"><?php echo $this->lang->line('create_encrypted'); ?></a>
-		</div> 
-        <h3><?php echo $this->lang->line('what_tofollow'); ?> <!--<a href="#">View All</a>--></h3>
-		<?php if (!empty($to_follow)) { ?>
-			<?php foreach($to_follow as $row) { ?>
-			<div class="who-follow-block">
-				<span>
-					<?php
-					if (isset($row['user_avatar'])) {
-						echo '<img src="'.$row['user_avatar'].'" alt="" />';
-					} else {
-						echo '<img src="'.ASSETS_URL . 'images/user-avatar.png" alt="" />';
-					}
-					?>
-				</span>
-				<div class="who-follow-text">
-					<span><?php echo $row['title']; ?></span> <?php echo $row['name']; ?>
-				</div>
-				<div class="who-follow-add" id="who-follow-<?php echo $row['feedback_id']; ?>"> <?php echo $this->lang->line('follow'); ?> <i class="fa fa-plus" aria-hidden="true"></i></div>
-				<input type="hidden" id="title_id" value="<?php echo $row['title_id']; ?>" />
-			</div>
-			<?php } ?>
-		<?php } ?>
+<!--		<div class="header-create-encrypted text-center" style="width:100%; margin:20px auto;">-->
+<!--			<a href="--><?php //echo site_url('encrypted/create'); ?><!--">--><?php //echo $this->lang->line('create_encrypted'); ?><!--</a>-->
+<!--		</div> -->
+          <?php  if (!empty($titles)) { ?>
+              <div class="search-form post-profile-block">
+                  <form role="form" method="post" action="">
+                      <h3><?php echo $this->lang->line('search_title'); ?></h3>
+                      <div class="form-group">
+                          <input type="text" placeholder="<?php echo $this->lang->line('type_in_to_search'); ?>" name="s" id="s" required="true" class="ui-autocomplete-input" autocomplete="off" aria-required="true" value="<?=$s; ?>">
+                          <input type="submit" value="<?php echo $this->lang->line('search'); ?>" name="search" style="width:100%; float:right;">
+                      </div>
+                  </form>
+              </div>
+              <?php if($is_search): ?>
+                  <div class="search-form post-profile-block">
+                      <h2 style="padding:15px 0;">Displaying search results for "<span style="color:#ea9707;"><?=$s; ?></span>"</h2>
+                  </div>
+              <?php endif; ?>
+              <div class="titles-wrapper" id="post-data" style="width:100%; float:left;">
+                  <?php foreach($titles as $title):  ?>
+                      <?php if(!empty($title['ads'])):  //print_r($title);?>
+                          <div class="post-profile-block">
+                              <div class="post-right-arrow">
+                                  <span class="post-profile-time-text">Promoted</span>
+                              </div>
+                              <div class="post-img">
+                                  <a href="" target="_blank"><img src="<?=$title['user_avatar']; ?>" alt=""> </a>
+                              </div>
+                              <div class="post-profile-content">
+					<span class="post-designation">
+						<a href="<?=$title['ads_url']; ?>"></a>
+					</span>
+                                  <span class="post-name"><?=$title['name']; ?></span>
+                                  <span class="post-address"></span>
+                                  <p><span class="more"><?=$title['feedback']; ?></span></p>
+                                  <div class="post-large-img">
+                                      <a href="<?=$title['ads_url']; ?>" target="_blank">
+                                          <img src="<?=$title['feedback_img']; ?>" alt="" >
+                                      </a>
+                                  </div>
+                              </div>
+                          </div>
+                      <?php else: ?>
+                          <div class="post-profile-block">
+                              <div class="post-img" style="position:relative;">
+                                  <?php if($title['unread_count']>0): ?>
+                                      <span class="notification-count"><?=$title['unread_count']; ?></span>
+                                  <?php endif; ?>
+                                  <?php
+                                  if(isset($row['user_avatar'])) {
+                                      echo '<img src="'.$row['user_avatar'].'" alt="" />';
+                                  } else {
+                                      echo '<img src="'.ASSETS_URL . 'images/user-avatar.png" alt="" />';
+                                  }
+                                  ?>
+                              </div>
+                              <div class="post-profile-content" style="min-height:40px; width: 100%">
+                                  <span class="post-designation"><a href="<?=site_url('encrypted/'); ?><?=$title['title_id']; ?>"><?=$title['title']; ?></a></span>
+                                  <span class="post-name"><?=$title['name']; ?></span>
+                                  <span class="post-address"><span class="post-profile-time-text"><?=$title['time']; ?></span></span>
+                              </div>
+                          </div>
+                      <?php endif; ?>
+                  <?php endforeach; ?>
+              </div>
+          <?php }else{ ?>
+              <div class="profile-listing">
+                  No Data Available
+              </div>
+          <?php } ?>
       </div>
     </div>
-    <div class="ajax-load text-center" style="display:none">
-        <p><img src="<?php echo ASSETS_URL . 'images/loader.gif'; ?>">Loading</p>
-    </div>
+<!--    <div class="ajax-load text-center" style="display:none">-->
+<!--        <p><img src="--><?php //echo ASSETS_URL . 'images/loader.gif'; ?><!--">Loading</p>-->
+<!--    </div>-->
     
     <script type="text/javascript">
 		// When the browser is ready...

@@ -23,11 +23,14 @@ foreach ($feedbacks as $row) { ?>
             <i class="fa fa-caret-down dropdown" aria-hidden="true" style="float: right; cursor: pointer"></i>
             <ul class="dropdown_options" style="display: none">
                 <?php if (!empty($this->session->userdata['mec_user']['id']) && $row['user_id'] == $this->session->userdata['mec_user']['id']) { ?>
-                    <li><a href="<?= site_url('post/edit/' . $row['id']); ?>" data-action="edit" class="edit-option">Edit</a></li>
-                    <li><a href="#" class="delete_feedback_post">Delete</a></li>
-                    <li><a href="#" class="hide_feedback_post"><?= ($row['is_hidden'] == 0) ? 'Hide' : 'UnHide' ?></a></li>
+                    <li><a href="<?= site_url('post/edit/' . $row['id']); ?>" data-action="edit" class="edit-option"><i class="fa fa-edit"></i> Edit</a></li>
+                    <li><a href="#" class="delete_feedback_post"><i class="fa fa-ban"></i> Delete</a></li>
+<!--                    <li><a href="#" class="hide_feedback_post">--><?//= ($row['is_hidden'] == 0) ? 'Hide' : 'UnHide' ?><!--</a></li>-->
+<!--                    <li><a href="#" class="hide_feedback_post">Hide</a></li>-->
                 <?php } else { ?>
-                    <li><a href="#" class="report_feedback" data-feedbackid="<?= $row['id']; ?>" data-titleid="<?= $row['title_id']; ?>">Report</a></li>
+                    <li><a href="#" class="hide_title" data-titleid="<?= $row['title_id']; ?>"><i class="fa fa-eye-slash"></i> Hide This Title</a></li>
+                    <li><a href="#" class="hide_all_user_feedbacks"><i class="fa fa-eye-slash"></i> Hide all feedbacks of <?= lcfirst($row['name']); ?> </a></li>
+                    <li><a href="#" class="report_feedback" data-feedbackid="<?= $row['id']; ?>" data-titleid="<?= $row['title_id']; ?>"><i class="fa fa-file"></i> Report</a></li>
                 <?php } ?>
             </ul>
 
@@ -68,11 +71,11 @@ foreach ($feedbacks as $row) { ?>
         </span>
             <span class="post-name">
                 <?php echo $row['name']; ?>
-                <?php if(!empty($row['tagged_usernames'])) {?>
-                    tagged
-                    <?php $tagged_friends = implode(', ', $row['tagged_usernames']); ?>
-                    <?= ucwords($tagged_friends); ?>
-                <?php }?>
+                <?php if(!empty($row['tagged_friends'])) {?>
+                tagged
+                <?php foreach ($row['tagged_friends'] as $k => $v ) {?>
+                    <a href="<?= site_url('UserProfile/profile/').$k ?>" style="color: #000"><?= ucwords($v) ?></a>
+                <?php }}?>
             </span>
             <span class="post-address"><?php echo $row['location']; ?></span>
             <p>
@@ -184,7 +187,8 @@ foreach ($feedbacks as $row) { ?>
                     <input type="hidden" id="title_id" value="<?php echo $row['title_id']; ?>"/>
                     <input type="hidden" id="user_id" value="<?= $row['user_id'] ?>"/>
                     <input type="hidden" id="session_id" value="<?= $this->session->userdata['mec_user']['id'] ?>"/>
-                    <input type="hidden" id="is_hidden" value="<?= $row['is_hidden'] ?>"/>
+<!--                    <input type="hidden" id="is_hidden" value="--><?//= $row['is_hidden'] ?><!--"/>-->
+                    <input type="hidden" id="is_hidden" value="0"/>
                 </div>
             <?php } ?>
         </div>
@@ -523,26 +527,32 @@ foreach ($feedbacks as $row) { ?>
     $('.hide_feedback_post').click(function () {
         var post_div = $(this).parents('.post-profile-block');
         var feedback_id = post_div.find('#feedback_id').val();
-        var session_id = post_div.find('#session_id').val();
-        var user_id = post_div.find('#user_id').val();
-        var is_hidden = post_div.find('#is_hidden').val();
+        // var is_hidden = post_div.find('#is_hidden').val();
+        var is_hidden = 1;
 
-        if (is_hidden == 0) {
-            $(this).html("Unhide");
-            post_div.find('#is_hidden').val(1);
-            is_hidden = 1;
-        } else {
-            $(this).html("Hide");
-            post_div.find('#is_hidden').val(0);
-            is_hidden = 0;
-        }
+        // if (is_hidden == 0) {
+        //     $(this).html("Unhide");
+        //     post_div.find('#is_hidden').val(1);
+        //     is_hidden = 1;
+        // } else {
+        //     $(this).html("Hide");
+        //     post_div.find('#is_hidden').val(0);
+        //     is_hidden = 0;
+        // }
 
         $.ajax({
             url: '<?= site_url('post/hide_feedback_post') ?>',
             type: 'POST',
             dataType: 'JSON',
             data: {feedback_id: feedback_id, is_hidden: is_hidden},
-        });
+        }).done(function (data) {
+            if(data.status == 1){
+                toastr.success(data.message, 'Feedback hidden', {timeOut: 5000});
+                post_div.remove();
+            }else{
+                toastr.success(data.error_message, 'An error occurred', {timeOut: 5000});
+            }
+        })
 
     });
 
@@ -610,4 +620,42 @@ foreach ($feedbacks as $row) { ?>
             $('.myModal').css({"display": "none"});
         });
     });
+</script>
+<script>
+    $('.hide_title').click(function (e) {
+        e.preventDefault();
+        var title_id = $(this).parents('.post-profile-block').find('#title_id').val();
+        var session_id = <?= $this->session->userdata['mec_user']['id'] ?>;
+        $.ajax({
+            url : '<?= site_url('title/hide_title') ?>',
+            type : 'POST',
+            dataType: 'JSON',
+            data : {title_id : title_id, session_id: session_id}
+        }).done(function (data) {
+            if (data.status == 1) {
+                toastr.success(data.message, 'Success Alert', {timeOut: 5000});
+            } else {
+                toastr.warning(data.error_message, 'Error', {timeOut: 5000});
+            }
+        })
+    })
+</script>
+<script>
+    $('.hide_all_user_feedbacks').click(function (e) {
+        e.preventDefault();
+        var user_id = $(this).parents('.post-profile-block').find('#user_id').val();
+        var session_id = <?= $this->session->userdata['mec_user']['id'] ?>;
+        $.ajax({
+            url : '<?= site_url('post/hide_all_user_feedbacks') ?>',
+            type : 'POST',
+            dataType: 'JSON',
+            data : {user_id : user_id, session_id: session_id}
+        }).done(function (data) {
+            if (data.status == 1) {
+                toastr.success(data.message, 'Success Alert', {timeOut: 5000});
+            } else {
+                toastr.warning(data.error_message, 'Error', {timeOut: 5000});
+            }
+        })
+    })
 </script>

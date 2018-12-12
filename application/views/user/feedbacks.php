@@ -4,6 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div class="container">
+  <div class="tabs" style="margin: 30px 10px;">
+    <a href="#" id="show-all-feedbacks" class="<?= ($feedback_type == 'all') ? 'blue-btn' : 'normal-btn' ?>">All Feedbacks</a>
+    <a href="#" id="show-hidden-feedbacks" class="<?= ($feedback_type == 'hidden') ? 'blue-btn' : 'normal-btn' ?>">Hidden Feedbacks</a>
+  </div>
   <ul class="masonry">
   <?php if (!empty($feedbacks)) { ?>
   <!-- Loop Starts Here -->
@@ -23,7 +27,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</a>
 		  </div>
 		  <span class="listing-post-profile-name"><?php echo $row['name']; ?></span> 
-		  <span class="listing-post-profile-time"><?php echo $row['time']; ?></span> 
+		  <span class="listing-post-profile-time"><?php echo $row['time']; ?></span>
+            <?php if (!empty($this->session->userdata['mec_user']['id']) && $row['user_id'] == $this->session->userdata['mec_user']['id']) { ?>
+                <i class="fa fa-caret-down dropdown" aria-hidden="true" style="position: relative; bottom: 40px; float: right; cursor: pointer"></i>
+                <div class="dropdown-hidden" style="display: none">
+                    Unhide
+                </div>
+            <?php } ?>
 		</div>
 		<div class="listing-post-name-block"> 
 			<span class="listing-post-name">
@@ -287,4 +297,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		});
 	});
+</script>
+<script>
+    $(document).ready(function () {
+        var element = $('.profile-listing-block');
+        $('#show-hidden-feedbacks').click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '<?= site_url('user/hidden_feedbacks') ?>'
+            }).done(function (data) {
+                element.html(data);
+            })
+
+        });
+        $('#show-all-feedbacks').click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '<?= site_url('user/feedbacks') ?>'
+            }).done(function (data) {
+                element.html(data);
+            })
+        });
+    });
+
+    jQuery(function () {
+        $('.dropdown').click(function () {
+            $(this).parents('.item').find('.dropdown-hidden').toggle();
+        })
+    });
+
+    $('.dropdown-hidden').click(function () {
+        var post_div = $(this).parents('.item');
+        var feedback_id = post_div.find('#feedback_id').val();
+        var is_hidden = 0;
+
+        $.ajax({
+            url: '<?= site_url('post/hide_feedback_post') ?>',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {feedback_id: feedback_id, is_hidden: is_hidden},
+        }).done(function (data) {
+            if(data.status == 1){
+                toastr.success(data.message, 'Feedback hidden', {timeOut: 5000});
+                post_div.remove();
+            }else{
+                toastr.success(data.error_message, 'An error occurred', {timeOut: 5000});
+            }
+        })
+    });
 </script>

@@ -198,12 +198,12 @@ span.profile-text span i{color:#fff; cursor:pointer; float: right; font-size: 18
 .profile-listing-block ul{margin:0 -7px;}
 .profile-listing-block li {float: left;padding: 0 7px 15px;width: 33.3333%;min-height: 600px;}
 .profile-listing {background: #fff;border-radius: 5px;float: left;padding: 20px;width: 100%;}
-.profile-listing, .profile-listing p {color:#434b57; font-size:16px; font-weight:400;}
+.profile-listing, .profile-listing p {height:100%; color:#434b57; font-size:16px; font-weight:400;}
 .profile-listing p.user-feedbacks {min-height:400px;}
 .profile-listing a{color:#ff835a; text-decoration:none;}
 .profile-listing-img-thumb {border-radius: 100%;float: left;margin: 0 10px 10px 0;overflow: hidden;width: 32px;}
 .listing-post-profile-name, .listing-post-profile-time {color: #434b57;font-size: 14px;font-weight: 600;}
-.listing-post-profile-time {color: #9c9c9c;display: block;font-weight: 400;float: right;}
+.listing-post-profile-time {color: #9c9c9c;display: block;font-weight: 400;}
 .post-profile-time-text{color: #9c9c9c;display: block;font-weight: 400; font-size:14px;}
 .listing-post-name-block {float: left;padding: 20px 0;width: 100%;}
 .listing-post-name {color: #ff835a;font-size: 20px;font-weight: 700;text-align: left;}
@@ -275,7 +275,7 @@ input[type='file']{ cursor: pointer;}
 .post-detail-rgt {float: left;padding-left: 10px;width: 30%;}
 .post-detail-rgt .profile-listing{margin:0 0 30px;}
 .post-details-wrapper .listing-post-name-block {padding-top: 0;}
-.profile-listing-img-thumb-block {padding: 0 0 20px;}
+.profile-listing-img-thumb-block {padding: 0 0 20px; position: relative}
 .post-detail-comments-block {/*border-top: 1px solid #eaeef1;*/float: left;margin: 30px 0 0;padding: 30px 0 0;width: 100%;}
 .post-detail-comments-block h3 {color: #434b57;font-size: 16px;font-weight: 600;padding: 0 0 30px;}
 .comment-description {padding: 0 0 15px 42px;border-bottom: 1px solid #eaeef1;margin: 0 0 15px;}
@@ -685,6 +685,7 @@ html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:activ
   top: 20px;
   left: 83px;
   z-index: 99999;
+  width: 350px;
 }
 
 ul.dropdown_options li a {
@@ -827,4 +828,29 @@ ul.select-friend-tag li {
   line-height: 1.5;
   color: #495057;
   vertical-align: middle;
+}
+
+.dropdown-hidden {
+  cursor: pointer;
+  position: absolute;
+  right: -90px;
+  top: 20px;
+  background: #fff;
+  width: 32%;
+  padding: 10px 20px;
+  z-index: 9999999;
+  border-radius: 5px;
+  border: 1px solid #efefef;
+}
+
+.restrict_user{
+  color: red;
+  cursor: pointer;
+}
+
+.restrict_user i{
+  background: red;
+  color: #fff;
+  padding: 3px 5px;
+  font-size: 18px;
 }

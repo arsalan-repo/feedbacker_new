@@ -433,7 +433,6 @@ class User extends CI_Controller {
 		
 		$this->data['module_name'] = 'User';
         $this->data['section_title'] = $user_result[0]['name'];
-		
 		/* Load Template */
 		$this->template->front_render('user/profile', $this->data);
 	}
@@ -583,6 +582,7 @@ class User extends CI_Controller {
 
 			$this->data['module_name'] = 'User';
 			$this->data['section_title'] = 'Feedbacks';
+            $this->data['feedback_type'] = 'all';
 
 			/* Load Template */
 			$response = $this->load->view('user/feedbacks', $this->data);
@@ -1154,4 +1154,161 @@ class User extends CI_Controller {
         echo json_encode(array('0' => array('user_id' => '', 'name' => '','photo'=>'')));
         die();
     }
+
+    public function hidden_feedbacks(){
+        if ($this->input->is_ajax_request()) {
+            // Get All Feedbacks by User
+            $join_str = array(
+                array(
+                    'table' => 'users',
+                    'join_table_id' => 'users.id',
+                    'from_table_id' => 'feedback.user_id',
+                    'join_type' => 'inner'
+                ),
+                array(
+                    'table' => 'titles',
+                    'join_table_id' => 'titles.title_id',
+                    'from_table_id' => 'feedback.title_id',
+                    'join_type' => 'inner'
+                )
+            );
+
+            $contition_array = array('feedback.user_id' => $this->user['id'], 'feedback.replied_to' => NULL, 'feedback.deleted' => 0, 'feedback.status' => 1);
+            $data = 'feedback_id, feedback.user_id, feedback.title_id, title, name, photo, feedback_cont, feedback_img, feedback_thumb, feedback_video, feedback_pdf,feedback_pdf_name, replied_to, location, feedback.datetime as time, is_hidden';
+
+            $feedback = $this->common->select_data_by_condition('feedback', $contition_array, $data, $sortby = 'feedback.datetime', $orderby = 'DESC', $limit = '', $offset = '', $join_str, $group_by = '');
+            if(!empty($feedback)) {
+                $return_array = array();
+
+                foreach ($feedback as $item) {
+                    $return = array();
+                    $return['id'] = $item['feedback_id'];
+                    $return['title_id'] = $item['title_id'];
+                    $return['title'] = $item['title'];
+                    $return['feedback_pdf_name'] = $item['feedback_pdf_name'];
+                    $return['feedback_pdf'] = $item['feedback_pdf'];
+                    $return['is_hidden'] = $item['is_hidden'];
+                    $return['user_id'] = $item['user_id'];
+                    $return['feedback_images'] = array();
+                    // Get likes for this feedback
+                    $contition_array_lk = array('feedback_id' => $item['feedback_id']);
+                    $flikes = $this->common->select_data_by_condition('feedback_likes', $contition_array_lk, $data = '*', $short_by = '', $order_by = '', $limit = '', $offset = '', $join_str = array(), $group_by = '');
+
+                    $return['likes'] = "";
+                    $feedback_images = $this->common->select_data_by_id('feedback_images', 'feedback_id', $item['feedback_id'], '*');
+
+                    if(count($flikes) > 1000) {
+                        $return['likes'] = (count($flikes)/1000)."k";
+                    } else {
+                        $return['likes'] = count($flikes);
+                    }
+
+                    // Get followers for this title
+                    $contition_array_fo = array('title_id' => $item['title_id']);
+                    $followings = $this->common->select_data_by_condition('followings', $contition_array_fo, $data = '*', $short_by = '', $order_by = '', $limit = '', $offset = '', $join_str = array(), $group_by = '');
+
+                    $return['followers'] = "";
+
+                    if(count($followings) > 1000) {
+                        $return['followers'] = (count($followings)/1000)."k";
+                    } else {
+                        $return['followers'] = count($followings);
+                    }
+
+                    // Check If user reported this feedback
+                    $contition_array_rs = array('feedback_id' => $item['feedback_id'], 'user_id' => $this->user['id']);
+                    $spam = $this->common->select_data_by_condition('spam', $contition_array_rs, $data = '*', $short_by = '', $order_by = '', $limit = '', $offset = '', $join_str = array(), $group_by = '');
+
+                    if(count($spam) > 0) {
+                        $return['report_spam'] = TRUE;
+                    } else {
+                        $return['report_spam'] = FALSE;
+                    }
+
+                    // Check If user liked this feedback
+                    $contition_array_li = array('feedback_id' => $item['feedback_id'], 'user_id' => $this->user['id']);
+                    $likes = $this->common->select_data_by_condition('feedback_likes', $contition_array_li, $data = '*', $short_by = '', $order_by = '', $limit = '', $offset = '', $join_str = array(), $group_by = '');
+
+                    if(count($likes) > 0) {
+                        $return['is_liked'] = TRUE;
+                    } else {
+                        $return['is_liked'] = FALSE;
+                    }
+
+                    // Check If user followed this title
+                    $contition_array_ti = array('title_id' => $item['title_id'], 'user_id' => $this->user['id']);
+                    $followtitles = $this->common->select_data_by_condition('followings', $contition_array_ti, $data = '*', $short_by = '', $order_by = '', $limit = '', $offset = '', $join_str = array(), $group_by = '');
+
+                    if(count($followtitles) > 0) {
+                        $return['is_followed'] = TRUE;
+                    } else {
+                        $return['is_followed'] = FALSE;
+                    }
+
+                    $return['name'] = $item['name'];
+
+                    if(isset($item['photo'])) {
+                        $return['user_avatar'] = S3_CDN . 'uploads/user/thumbs/' . $item['photo'];
+                    } else {
+                        $return['user_avatar'] = ASSETS_URL . 'images/user-avatar.png';
+                    }
+
+                    if($item['feedback_img'] !== "") {
+                        $return['feedback_img'] = S3_CDN . 'uploads/feedback/main/' . $item['feedback_img'];
+                    } else {
+                        $return['feedback_img'] = "";
+                    }
+
+                    if($item['feedback_thumb'] !== "") {
+                        $return['feedback_thumb'] = S3_CDN . 'uploads/feedback/thumbs/' . $item['feedback_thumb'];
+                    } else {
+                        $return['feedback_thumb'] = "";
+                    }
+
+                    if($item['feedback_video'] !== "") {
+                        $return['feedback_video'] = S3_CDN . 'uploads/feedback/video/' . $item['feedback_video'];
+                        //$return['feedback_thumb'] = S3_CDN . 'uploads/feedback/thumbs/video_thumbnail.png';
+                    } else {
+                        $return['feedback_video'] = "";
+                    }
+                    if($item['feedback_pdf'] !== "") {
+                        $return['feedback_pdf'] = S3_CDN . 'uploads/feedback/pdf/' . $item['feedback_pdf'];
+                    } else {
+                        $return['feedback_pdf'] = "";
+                    }
+                    if(count($feedback_images)>0){
+                        foreach($feedback_images as $img){
+                            $imagearr=array();
+                            $imagearr['feedback_img'] = S3_CDN . 'uploads/feedback/main/' . $img['feedback_img'];
+                            $imagearr['feedback_thumb'] = S3_CDN . 'uploads/feedback/thumbs/' . $img['feedback_thumb'];
+                            $return['feedback_images'][]=$imagearr;
+                        }
+                    }else{
+                        $return['feedback_images']=array();
+
+                    }
+                    $return['feedback'] = $item['feedback_cont'];
+                    $return['location'] = $item['location'];
+                    $return['time'] = $this->common->timeAgo($item['time']);
+
+                    if($return['is_hidden'] == 1){
+                        array_push($return_array, $return);
+                    }
+                    $this->data['feedbacks'] = $return_array;
+                }
+            } else {
+                $this->data['feedbacks'] = array();
+                $this->data['no_record_found'] = $this->lang->line('no_record_found');
+            }
+
+            $this->data['module_name'] = 'User';
+            $this->data['section_title'] = 'Feedbacks';
+            $this->data['feedback_type'] = 'hidden';
+
+            /* Load Template */
+            $response = $this->load->view('user/feedbacks', $this->data);
+            echo json_encode($response);
+        }
+    }
+
 }

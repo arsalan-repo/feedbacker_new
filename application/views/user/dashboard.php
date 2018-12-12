@@ -47,6 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
       </div>
       <div class="middle-content">
+          <?php  $this->load->view('parts/create-post-widget', $this->data); ?>
         <div class="middle-content-block" id="post-data">
           <?php 
 		  if (!empty($feedbacks)) {
