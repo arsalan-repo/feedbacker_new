@@ -1,3 +1,47 @@
+<style>
+    .pac-container.pac-logo, #ui-id-5 {
+        z-index: 999999;
+    }
+
+    .feedback_status {
+        display: block;
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        margin-bottom: 10px;
+    }
+
+    #feedback_img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+
+    .camera-icon-block {
+        padding: 22px 50px !important;
+    }
+
+    .camera-icon-block span {
+        top: 10px !important;
+    }
+
+    .update {
+        float: right;
+        margin: -50px 0;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 5px;
+        color: #000;
+        background: #f5f6f7;
+    }
+</style>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
@@ -6,16 +50,17 @@ foreach ($feedbacks as $row) { ?>
     <div class="post-profile-block" id="post<?= $row['id']; ?>">
         <div class="post-right-arrow">
             <?php if (!empty($this->session->userdata['mec_user']['id']) && $row['user_id'] == $this->session->userdata['mec_user']['id']): ?>
-<!--                <span class="post-options-wrapper"><a href="#" class="post-options-btn" rel="toggle"-->
-<!--                                                      data-feedback="--><?//= $row['id']; ?><!--"-->
-<!--                                                      data-title="--><?//= $row['title_id']; ?><!--"></a></span>-->
+                <!--                <span class="post-options-wrapper"><a href="#" class="post-options-btn" rel="toggle"-->
+                <!--                                                      data-feedback="--><? //= $row['id']; ?><!--"-->
+                <!--                                                      data-title="--><? //= $row['title_id']; ?><!--"></a></span>-->
                 <div class="actions-bar" id="actions-bar-<?= $row['id']; ?>" style="display:none;">
                     <ul>
                         <li><a href="#" data-action="delete" data-feedback="<?= $row['id']; ?>"
                                class="option-item delete-option"><i class="fa fa-remove" aria-hidden="true"></i> Delete</a>
                         </li>
-<!--                        <li><a href="--><?//= site_url('post/edit/' . $row['id']); ?><!--" data-action="edit"-->
-<!--                               class="edit-option"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></li>-->
+                        <!--                        <li><a href="-->
+                        <? //= site_url('post/edit/' . $row['id']); ?><!--" data-action="edit"-->
+                        <!--                               class="edit-option"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></li>-->
                     </ul>
                 </div>
             <?php endif; ?>
@@ -24,13 +69,18 @@ foreach ($feedbacks as $row) { ?>
             <ul class="dropdown_options" style="display: none">
                 <?php if (!empty($this->session->userdata['mec_user']['id']) && $row['user_id'] == $this->session->userdata['mec_user']['id']) { ?>
                     <li><a href="#" class="hide_feedback_post"><i class="fa fa-eye-slash"></i> Hide</a></li>
-                    <li><a href="<?= site_url('post/edit/' . $row['id']); ?>" data-action="edit" class="edit-option"><i class="fa fa-edit"></i> Edit</a></li>
+                    <li><a href="#" data-action="edit" class="edit_feedback" data-feedbackid="<?= $row['id']; ?>"><i
+                                    class="fa fa-edit"></i> Edit</a></li>
+                    <!--                    <li><a href="--><? //= site_url('post/edit/' . $row['id']); ?><!--" data-action="edit" class="edit_feedback"><i class="fa fa-edit"></i> Edit</a></li>-->
                     <li><a href="#" class="delete_feedback_post"><i class="fa fa-ban"></i> Delete</a></li>
-<!--                    <li><a href="#" class="hide_feedback_post">--><?//= ($row['is_hidden'] == 0) ? 'Hide' : 'UnHide' ?><!--</a></li>-->
+                    <!--                    <li><a href="#" class="hide_feedback_post">--><? //= ($row['is_hidden'] == 0) ? 'Hide' : 'UnHide' ?><!--</a></li>-->
                 <?php } else { ?>
-                    <li><a href="#" class="hide_title" data-titleid="<?= $row['title_id']; ?>"><i class="fa fa-eye-slash"></i> Hide This Title</a></li>
-                    <li><a href="#" class="hide_all_user_feedbacks"><i class="fa fa-eye-slash"></i> Hide all feedbacks of <?= lcfirst($row['name']); ?> </a></li>
-                    <li><a href="#" class="report_feedback" data-feedbackid="<?= $row['id']; ?>" data-titleid="<?= $row['title_id']; ?>"><i class="fa fa-file"></i> Report</a></li>
+                    <li><a href="#" class="hide_title" data-titleid="<?= $row['title_id']; ?>"><i
+                                    class="fa fa-eye-slash"></i> Hide This Title</a></li>
+                    <li><a href="#" class="hide_all_user_feedbacks"><i class="fa fa-eye-slash"></i> Hide all feedbacks
+                            of <?= lcfirst($row['name']); ?> </a></li>
+                    <li><a href="#" class="report_feedback" data-feedbackid="<?= $row['id']; ?>"
+                           data-titleid="<?= $row['title_id']; ?>"><i class="fa fa-file"></i> Report</a></li>
                 <?php } ?>
             </ul>
 
@@ -71,14 +121,18 @@ foreach ($feedbacks as $row) { ?>
         </span>
             <span class="post-name">
                 <?php echo $row['name']; ?>
-                <?php if(!empty($row['tagged_friends'])) {?>
-                tagged
-                <?php foreach ($row['tagged_friends'] as $k => $v ) {?>
-                    <a href="<?= site_url('UserProfile/profile/').$k ?>" style="color: #000"><?= ucwords($v) ?></a>
-                <?php }}?>
+                <?php if (!empty($row['tagged_friends'])) { ?>
+                    tagged
+                    <?php foreach ($row['tagged_friends'] as $k => $v) { ?>
+                        <a href="<?= site_url('UserProfile/profile/') . $k ?>" style="color: #000"
+                           data-friendid="<?= $k ?>" data-friendname="<?= $v ?>"><?= ucwords($v) ?></a>
+                    <?php }
+                } ?>
             </span>
-            <span class="post-address"><?php echo $row['location']; ?></span>
-            <p>
+            <span class="post-address"
+                  data-address="<?php echo $row['location']; ?>"><?php echo $row['location']; ?></span>
+            <p id="feedback_content"
+               data-feedbackcontent="<?php echo str_replace("\\n", "<br>", str_replace("\\r\\n", "<br>", $this->emoji->Decode(nl2br($row['feedback'])))); ?>">
                 <span class="more"><?php echo str_replace("\\n", "<br>", str_replace("\\r\\n", "<br>", $this->emoji->Decode(nl2br($row['feedback'])))); ?></span>
             </p>
             <?php if (isset($row['feedback_images']) && count($row['feedback_images']) > 1) { ?>
@@ -87,7 +141,8 @@ foreach ($feedbacks as $row) { ?>
                         <?php foreach ($row['feedback_images'] as $img): ?>
                             <li>
                                 <a href="<?= $img['feedback_img']; ?>">
-                                    <img src="<?= $img['feedback_img']; ?>"/>
+                                    <img src="<?= $img['feedback_img']; ?>"
+                                         data-feedbackimg="<?= $img['feedback_img']; ?>"/>
                                 </a>
                             </li>
                         <?php endforeach; ?>
@@ -187,8 +242,11 @@ foreach ($feedbacks as $row) { ?>
                     <input type="hidden" id="title_id" value="<?php echo $row['title_id']; ?>"/>
                     <input type="hidden" id="user_id" value="<?= $row['user_id'] ?>"/>
                     <input type="hidden" id="session_id" value="<?= $this->session->userdata['mec_user']['id'] ?>"/>
-<!--                    <input type="hidden" id="is_hidden" value="--><?//= $row['is_hidden'] ?><!--"/>-->
+                    <!--                    <input type="hidden" id="is_hidden" value="-->
+                    <? //= $row['is_hidden'] ?><!--"/>-->
                     <input type="hidden" id="is_hidden" value="0"/>
+                    <input type="hidden" name="latitude" id="latitude" value="<?= $row['latitude'] ?>"/>
+                    <input type="hidden" name="longitude" id="longitude" value="<?= $row['longitude'] ?>"/>
                 </div>
             <?php } ?>
         </div>
@@ -209,7 +267,8 @@ foreach ($feedbacks as $row) { ?>
         <div class="camera-map-icon">
             <div class="camera-icon-block">
                 <span>Choose File</span>
-                <input name="feedback_img[]" multiple id="feedback_img" type="file"/>
+                <input name="feedback_img[]" multiple id="feedback_img" type="file"
+                       style="position: absolute;left: 0;top: 0;opacity: 0;"/>
             </div>
             <img src="<?php echo base_url() . 'assets/images/map-icon.png'; ?>" class="geo-map" alt=""/>
         </div>
@@ -236,6 +295,75 @@ foreach ($feedbacks as $row) { ?>
             <input type="hidden" id="report-feedback-id" value="">
             <input type="hidden" id="report-title-id" value="">
             <button class="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!--Edit Post-->
+<div class="modal edit">
+    <div class="modal-header" style="margin-top: 1%;width: 50%">
+        <span class="close-edit-feedback"
+              style="cursor: pointer;color: #aaa;float: right;font-size: 28px;font-weight: bold;">&times;</span>
+        <p style="font-size: 20px; font-weight: bold">
+            Edit Feedback
+        </p>
+    </div>
+    <div class="modal-content" style="width: 50%">
+        <form>
+            <input type="hidden" name="feedback_id" id="feedback_id" value="">
+            <label>Location</label>
+            <input type="text" name="location" id="loc" placeholder=""/>
+            <input type="hidden" name="latitude" id="lat" value=""/>
+            <input type="hidden" name="longitude" id="long" value=""/>
+            <label>Your Feedback</label>
+            <textarea name="feedback_cont" id="feedback_cont" placeholder="" rows="3" required value=""></textarea>
+            <label>Post Status</label>
+            <select name="feedback_status">
+                <option value="public">Public</option>
+                <option value="friends">Friends</option>
+                <option value="me">Only Me</option>
+            </select>
+            <br/>
+            <br/>
+            <div class="tagging">
+                <label>
+                    Tag Friends
+                </label>
+                <br/>
+                <br/>
+                <ul class="select-friend-tag">
+
+                </ul>
+                <input type="text" placeHolder="Enter name" name="q" id="Autocomplete" value="">
+                <br/>
+                <br/>
+            </div>
+            <div class="post-btn-block">
+                <div class="camera-map-icon">
+                    <div class="camera-icon-block">
+                        <span>Choose File</span>
+<!--                        <input name="feedback_img[]" multiple id="feedback_img" type="file" onchange="readURL(this);"/>-->
+                        <input name="feedback_img[]" multiple id="feedback_img" type="file"/>
+                    </div>
+                    <img src="<?php echo base_url() . 'assets/images/map-icon.png'; ?>" class="geo-map" alt=""/>
+                </div>
+                <div class="tag-friends">
+                    <a href="#" class="tag-friends"><i class="fa fa-tags"></i> Tag Friends</a>
+                </div>
+            </div>
+            <div class="feedback-images" style="clear:both; overflow:hidden;">
+                <div class="form-group" style="width:16%; float:left; margin:4px;" id="image">
+                    <a href="" target="_blank">
+                        <img src="" alt="" width="180">
+                    </a>
+<!--                    <a>-->
+<!--                        <img id="blah" src="#" alt="your image" />-->
+<!--                    </a>-->
+                    <a class="ajax_delete" data-image_id="" data-feedback_id="" href="" title="Remove Photo"
+                       style="margin: 0 auto; width: 120px;">Remove Photo</a>
+                </div>
+            </div>
+            <button class="update">Update</button>
         </form>
     </div>
 </div>
@@ -344,10 +472,10 @@ foreach ($feedbacks as $row) { ?>
                 processData: false,
                 contentType: false
             }).done(function (data) {
-                if(data.status == 1){
-                    dialog.dialog( "close" );
+                if (data.status == 1) {
+                    dialog.dialog("close");
                     toastr.success(data.message, 'Success Alert', {timeOut: 5000});
-                }else {
+                } else {
                     toastr.warning(data.error_message, 'Alert', {timeOut: 5000});
                 }
             }).fail(function (data) {
@@ -546,10 +674,10 @@ foreach ($feedbacks as $row) { ?>
             dataType: 'JSON',
             data: {feedback_id: feedback_id, is_hidden: is_hidden},
         }).done(function (data) {
-            if(data.status == 1){
+            if (data.status == 1) {
                 toastr.success(data.message, 'Feedback hidden', {timeOut: 5000});
                 post_div.remove();
-            }else{
+            } else {
                 toastr.success(data.error_message, 'An error occurred', {timeOut: 5000});
             }
         })
@@ -602,7 +730,11 @@ foreach ($feedbacks as $row) { ?>
                 url: '<?= site_url('post/report_feedback') ?>',
                 type: 'POST',
                 dataType: 'JSON',
-                data: {report_feedback_id : report_feedback_id, report_title_id : report_title_id, report_content: report_content},
+                data: {
+                    report_feedback_id: report_feedback_id,
+                    report_title_id: report_title_id,
+                    report_content: report_content
+                },
             }).done(function (data) {
                 if (data.status == 1) {
                     toastr.success(data.message, 'Success Alert', {timeOut: 5000});
@@ -627,10 +759,10 @@ foreach ($feedbacks as $row) { ?>
         var title_id = $(this).parents('.post-profile-block').find('#title_id').val();
         var session_id = <?= $this->session->userdata['mec_user']['id'] ?>;
         $.ajax({
-            url : '<?= site_url('title/hide_title') ?>',
-            type : 'POST',
+            url: '<?= site_url('title/hide_title') ?>',
+            type: 'POST',
             dataType: 'JSON',
-            data : {title_id : title_id, session_id: session_id}
+            data: {title_id: title_id, session_id: session_id}
         }).done(function (data) {
             if (data.status == 1) {
                 toastr.success(data.message, 'Success Alert', {timeOut: 5000});
@@ -646,10 +778,10 @@ foreach ($feedbacks as $row) { ?>
         var user_id = $(this).parents('.post-profile-block').find('#user_id').val();
         var session_id = <?= $this->session->userdata['mec_user']['id'] ?>;
         $.ajax({
-            url : '<?= site_url('post/hide_all_user_feedbacks') ?>',
-            type : 'POST',
+            url: '<?= site_url('post/hide_all_user_feedbacks') ?>',
+            type: 'POST',
             dataType: 'JSON',
-            data : {user_id : user_id, session_id: session_id}
+            data: {user_id: user_id, session_id: session_id}
         }).done(function (data) {
             if (data.status == 1) {
                 toastr.success(data.message, 'Success Alert', {timeOut: 5000});
@@ -658,4 +790,205 @@ foreach ($feedbacks as $row) { ?>
             }
         })
     })
+</script>
+
+<!--Edit feedback-->
+
+<script>
+    jQuery(function () {
+        $(".geo-map").click(function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showLocation);
+            } else {
+                toastr.error('Geolocation is not supported by this browser', 'Failure Alert', {timeOut: 5000});
+            }
+        });
+        var location_field_id = null;
+
+        function showCurrentLocationField(lat, lng) {
+            var $old_location = $(location_field_id != null ? location_field_id : "#loc");
+            var rand = Math.floor(Math.random() * 99999999);
+            var rand_id = 'location-' + rand;
+            var $location = $('<input type="text" name="location" id="' + rand_id + '" placeholder="Enter your location"/>');
+
+            location_field_id = "#" + rand_id;
+
+            $location.insertAfter($old_location);
+            $old_location.remove();
+
+            var location_picker_opt1 = {
+                location: {
+                    latitude: lat,
+                    longitude: lng
+                },
+                inputBinding: {
+                    locationNameInput: jQuery('#' + rand_id),
+                    latitudeInput: jQuery('#lat'),
+                    longitudeInput: jQuery('#long'),
+                },
+                enableAutocomplete: true,
+            };
+
+            console.log(location_picker_opt1);
+            $("#" + rand_id).locationpicker(location_picker_opt1);
+        };
+
+        function showLocation(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            showCurrentLocationField(latitude, longitude);
+
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo site_url('post/get_location'); ?>',
+                data: 'latitude=' + latitude + '&longitude=' + longitude,
+                success: function (response) {
+                    if (response) {
+                        var objJSON = JSON.parse(response);
+                        $('#location').val(objJSON.location);
+
+                        $("#latitude").val(latitude);
+                        $("#longitude").val(longitude);
+
+                        $("#latitude").trigger('change');
+                        $("#longitude").trigger('change');
+                    } else {
+                        toastr.error('Error getting location. Try later!', 'Failure Alert', {timeOut: 5000});
+                    }
+                }
+            });
+        };
+        var tagged_friends = [];
+        $('.edit_feedback').click(function (e) {
+            e.preventDefault();
+            $('.edit').find('.select-friend-tag li').remove();
+            $('.edit').fadeIn();
+            var feedback_id = $(this).parents('.post-profile-block').find('#feedback_id').val();
+            var feedback_content = $(this).parents('.post-profile-block').find('#feedback_content').attr('data-feedbackcontent');
+            var latitude = $(this).parents('.post-profile-block').find('#latitude').val();
+            var longitude = $(this).parents('.post-profile-block').find('#longitude').val();
+            var image = '';
+            if ($(this).parents('.post-profile-block').find('.flexslider img').length > 0)
+                image = $(this).parents('.post-profile-block').find('.flexslider img').attr('data-feedbackimg');
+            $('.edit').find('#feedback_id').val(feedback_id);
+            $('.edit').find('#feedback_cont').val(feedback_content);
+            $('.edit').find('#lat').val(latitude);
+            $('.edit').find('#long').val(longitude);
+            if(image != ''){
+                $('.edit').find('.feedback-images .ajax_delete').show();
+                $('.edit').find('.feedback-images a').attr('href', image);
+            }else{
+                $('.edit').find('.feedback-images .ajax_delete').hide();
+            }
+            $('.edit').find('.feedback-images img').attr('src', image);
+            showCurrentLocationField(latitude, longitude);
+            // Tagged Friends
+            $(this).parents('.post-profile-block').find('.post-name > a').each(function () {
+                $('.edit').find('.select-friend-tag').show();
+                var friend_id = $(this).attr('data-friendid');
+                var friend_name = $(this).attr('data-friendname');
+                tagged_friends.push(friend_id);
+                // console.log(tagged_friends);
+                $('.edit').find('.select-friend-tag').append('<li data-name="' + friend_name + '"><i class="fa fa-remove remove-friends"></i><span>' + friend_name + '</span><input type="hidden" name="tagged_friends[]" value="' + friend_id + '"></li>')
+            });
+        });
+        $('.close-edit-feedback').click(function () {
+            $('.edit').css({"display": "none"});
+            tagged_friends = [];
+        });
+
+        $("#Autocomplete").autocomplete({
+            minLength: 2,
+            source: function (request, response) {
+                $.getJSON("<?php echo site_url('user/find_friends'); ?>", {
+                    term: request.term
+                }, response);
+
+            },
+            focus: function (event, ui) {
+                return false;
+            },
+            select: function (event, ui) {
+
+                if (jQuery.inArray(ui.item.user_id, tagged_friends) <= -1) {
+                    console.log(ui.item);
+                    var $tags = $('.edit .select-friend-tag');
+                    $tags.show();
+                    var $li = $('<li data-id="'+ui.item.user_id+'" data-name="' + ui.item.name + '"><i class="fa fa-remove remove-friends"></i>' + ui.item.name + '<input type="hidden" name="tagged_friends[]" value="' + ui.item.user_id + '" /></li>');
+                    $tags.append($li);
+                    tagged_friends.push(ui.item.user_id);
+                    setTimeout(function () {
+                        $('#Autocomplete').val('');
+                    }, 100);
+                } else {
+                    alert('Already exists');
+                }
+
+                this.value = ui.item.name;
+                var img = 'https://feedbacker.me/dev/assets/images/user-avatar.png';
+                if (ui.item.photo) {
+                    img = 'https://d1f8jwm5uy46l.cloudfront.net/uploads/user/thumbs/' + ui.item.photo;
+                }
+                $("<div/>").html('<div class="post-profile-block friend-request" id="user-id-' + ui.item.user_id + '"><div class="post-img"><img src="' + img + '" alt=""></div><div class="post-profile-content"> <span class="post-designation"><a href="#">' + ui.item.name + '</a>	</span>			<span class="post-name">Jordan</span> 		</div>		<div class="post-buttons">			<button type="button" data-user="' + ui.item.user_id + '" id="reqbtn-' + ui.item.user_id + '" class="btn btn-blue send_friend_request" onclick="sendFriendRequest(' + ui.item.user_id + ')">Send Friend Request</button></div></div>').prependTo("#user-search-list");
+
+                return false;
+            }
+        }).autocomplete("instance")._renderItem = function (ul, item) {
+            var img = 'https://feedbacker.me/dev/assets/images/user-avatar.png';
+            if (item.photo) {
+                img = 'https://d1f8jwm5uy46l.cloudfront.net/uploads/user/thumbs/' + item.photo;
+            }
+            return $("<li>").append("<div><img style='width:40px; border-radius:50%; display:inline-block; float:left; margin-right:10px;' src='" + img + "'><span style='display:inline-block; line-height:40px; '>" + item.name + "</span></div>").appendTo(ul);
+        };
+        $(document).on('click', '.remove-friends', function (e) {
+            e.preventDefault();
+            var $liname = $(this).parent();
+            tagged_friends.splice(jQuery.inArray($liname.data('id'), tagged_friends), 1);
+            $liname.remove();
+            console.log(tagged_friends);
+        });
+        $('.update').click(function (e) {
+            e.preventDefault();
+            var feedback_id = $('.edit').find('#feedback_id').val();
+            var feedback_content = $('.edit').find('#feedback_cont').val();
+            var latitude = $('.edit').find('#lat').val();
+            var longitude = $('.edit').find('#long').val();
+            var location = $('.edit').find('input[name=location]').val();
+            console.log(feedback_id, feedback_content, latitude, longitude, location, tagged_friends);
+            $.ajax({
+                url: '<?= site_url('post/edit_feedback'); ?>',
+                type : 'POST',
+                dataType : 'JSON',
+                data : {feedback_id: feedback_id, feedback_content: feedback_content, latitude: latitude, longitude: longitude, location: location, tagged_friends: tagged_friends}
+            }).done(function (data) {
+                if(data.status == 1){
+                    toastr.success(data.message, 'Success Alert', {timeOut: 5000});
+                    $('.edit').hide();
+                    window.location.reload();
+                }else{
+                    toastr.warning(data.message, 'An error occurred', {timeOut: 5000});
+                }
+            })
+        })
+    });
+
+
+</script>
+<script>
+    function readURL(input)
+    {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 </script>

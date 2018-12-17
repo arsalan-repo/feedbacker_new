@@ -216,6 +216,8 @@ class Common extends CI_Model
 
 
             $return['title'] = $item['title'];
+            $return['latitude'] = $item['latitude'];
+            $return['longitude'] = $item['longitude'];
             $feedback_images = $this->select_data_by_id('feedback_images', 'feedback_id', $item['feedback_id'], '*');
             $i = 0;
             foreach ($feedback_images as $img) {

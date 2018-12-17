@@ -185,8 +185,8 @@ if(!isset($this->session->userdata['mec_user'])){
         </div>
     </div>
 </div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDktEtV_Y5KnUIOEzTYs9UoLKGyinVdLQw&libraries=places&callback=initMap"
-        async defer></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDktEtV_Y5KnUIOEzTYs9UoLKGyinVdLQw&libraries=places&callback=initMap"-->
+<!--        async defer></script>-->
 <script>
     var autocomplete;
 

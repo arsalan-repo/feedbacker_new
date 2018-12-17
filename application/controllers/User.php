@@ -221,7 +221,7 @@ class User extends CI_Controller {
 			$contition_array = array('replied_to' => NULL, 'feedback.deleted' => 0, 'feedback.status' => 1);
 		}
 		
-		$data = 'feedback_id, feedback.title_id, title, users.id as user_id, name, photo, feedback_cont, feedback_img, feedback_thumb, feedback_video,feedback_pdf, replied_to, location, feedback.datetime as time, is_hidden, tagged_friends, feedback_status';
+		$data = 'feedback_id, feedback.title_id, title, users.id as user_id, name, photo, feedback_cont, feedback_img, feedback_thumb, feedback_video,feedback_pdf, replied_to, location, feedback.datetime as time, is_hidden, tagged_friends, feedback_status, longitude, latitude';
 		if (!empty($this->input->get("page"))) {
 			$page = ceil($this->input->get("page") - 1);
 			$start = ceil($page * $this->perPage);
@@ -234,7 +234,6 @@ class User extends CI_Controller {
 				
 				// Append Ad Banners
 				$return_array = $this->common->adBanners($result, $country, 'home', $this->input->get("page"));
-				
 				$this->data['feedbacks'] = $return_array;
 			} else {
 				$this->data['feedbacks'] = array();
@@ -268,7 +267,6 @@ class User extends CI_Controller {
             }
             $feedback = array_merge($feedback, $shared_feedbacks);
 
-
             usort($feedback, function ($a, $b){
                 return strtotime($b['time']) - strtotime($a['time']);
             });
@@ -281,12 +279,11 @@ class User extends CI_Controller {
 				$return_array = $this->common->adBanners($result, $country, 'home');
 				
 				$this->data['feedbacks'] = $return_array;
-
-			} else {
+            } else {
 				$this->data['feedbacks'] = array();
 				$this->data['no_record_found'] = $this->lang->line('no_results');
 			}
-		
+
 			/* Load Template */
 			$this->template->front_render('user/dashboard', $this->data);
 		}			

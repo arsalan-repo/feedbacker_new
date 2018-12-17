@@ -879,7 +879,6 @@ class Post extends CI_Controller {
 				$this->data['feedbacks'] = array();
 				$this->data['no_record_found'] = $this->lang->line('no_results');
 			}
-			
 			$response = $this->load->view('post/ajax', $this->data);
 			echo json_encode($response);
 		} else {
@@ -1158,5 +1157,25 @@ class Post extends CI_Controller {
             die;
         }
         echo json_encode(array('error_message' => 'An error occurred', 'status' => 0));
+    }
+
+    public function edit_feedback(){
+        if(isset($_POST['feedback_id']) && isset($_POST['feedback_content']) && isset($_POST['latitude']) && isset($_POST['longitude']) && isset($_POST['location']) && isset($_POST['tagged_friends'])){
+            $feedback_id = $_POST['feedback_id'];
+            $where = array(
+                'feedback_id' => $feedback_id,
+            );
+            $data = array(
+                'feedback_cont' => $_POST['feedback_content'],
+                'latitude' => $_POST['latitude'],
+                'longitude' => $_POST['longitude'],
+                'location' => $_POST['location'],
+                'tagged_friends' => json_encode($_POST['tagged_friends']),
+            );
+            $this->common->update('db_feedback', $where, $data);
+            echo json_encode(array('message' => 'Your feedback has been updated', 'status' => 1));
+            die;
+        }
+        echo json_encode(array('error_message' => 'Error updating feedback', 'status' => 0));
     }
 }
