@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b180b7d7-75d9-409e-8fa4-201889640b11" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/_templates/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/_templates/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/_templates/main_header.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/_templates/main_header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/parts/create-title-widget.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/parts/create-title-widget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/post/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/post/ajax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="b180b7d7-75d9-409e-8fa4-201889640b11" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,48 +81,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/assets/css/style.css">
+      <file leaf-file-name="functions.php" pinned="true" current-in-tab="true">
+        <entry file="remoteDeploymentFS://&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="106" column="87" selection-start-line="106" selection-start-column="87" selection-end-line="106" selection-end-column="87" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create-title-widget.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/parts/create-title-widget.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#label#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main_header.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/_templates/main_header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
-              <folding>
-                <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#header#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/_templates/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="68" column="34" lean-forward="true" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
+            <state relative-caret-position="319">
+              <caret line="367" column="25" selection-start-line="367" selection-start-column="25" selection-end-line="367" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -146,13 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>data-image_id</find>
-      <find>update</find>
-      <find>$this-&gt;common-&gt;update</find>
-      <find>url</find>
-      <find>json_encode</find>
-      <find>Quiz</find>
-      <find>popup</find>
       <find>jQuer</find>
       <find>wp_enqueue_script</find>
       <find>jQuery</find>
@@ -176,6 +125,13 @@
       <find>user-list</find>
       <find>.post-btn</find>
       <find>font</find>
+      <find>.header-create-encrypted</find>
+      <find>banner-wrapper parallax</find>
+      <find>robolist_lite_header_search</find>
+      <find>.banner-search-input-item</find>
+      <find>.banner-search-input</find>
+      <find>section#promo .promo-content</find>
+      <find>die</find>
     </findStrings>
     <replaceStrings>
       <replace>remove-friends</replace>
@@ -195,9 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/views/post/title.php" />
-        <option value="$PROJECT_DIR$/application/controllers/admin/Feedbacks.php" />
-        <option value="$PROJECT_DIR$/application/views/admin/feedbacks/report_feedbacks.php" />
         <option value="$PROJECT_DIR$/dev/application/config/config.php" />
         <option value="$PROJECT_DIR$/application/views/parts/user_profile_card.php" />
         <option value="$PROJECT_DIR$/application/views/user/profile.php" />
@@ -240,12 +193,15 @@
         <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/single.php" />
         <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-config.php" />
         <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/header.php" />
-        <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/functions.php" />
         <option value="$PROJECT_DIR$/application/views/post/ajax.php" />
         <option value="$PROJECT_DIR$/application/views/parts/create-title-widget.php" />
         <option value="$PROJECT_DIR$/application/views/_templates/main_header.php" />
         <option value="$PROJECT_DIR$/application/views/_templates/header.php" />
         <option value="$PROJECT_DIR$/assets/css/style.css" />
+        <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/lib/robolist-lite-functions.php" />
+        <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/footer.php" />
+        <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/assets/css/robolist.css" />
+        <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/functions.php" />
       </list>
     </option>
   </component>
@@ -364,7 +320,7 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/streams" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1400" />
@@ -427,7 +383,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="HTML&#10;PHP&#10;TEXT" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../profile-builder" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../robolist-lite" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -477,26 +433,26 @@
       <workItem from="1545033817239" duration="48456000" />
       <workItem from="1545307208355" duration="12030000" />
       <workItem from="1545382999029" duration="10525000" />
-      <workItem from="1545638394091" duration="6106000" />
+      <workItem from="1545638394091" duration="10707000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="293399000" />
+    <option name="totallyTimeSpent" value="298000000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" weight="0.32885906" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" weight="0.3285151" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="7" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32885906" />
-      <window_info anchor="right" id="Remote Host" order="3" weight="0.2575" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.2325" />
+      <window_info active="true" anchor="right" id="Remote Host" order="3" visible="true" weight="0.2575" />
+      <window_info content_ui="combo" id="Project" order="2" weight="0.2325" />
       <window_info anchor="bottom" id="Docker" order="4" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="0" />
       <window_info anchor="bottom" id="Find" order="6" />
@@ -838,6 +794,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="106" column="106" selection-start-line="106" selection-start-column="106" selection-end-line="106" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/parts/create-title-widget.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -852,13 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/_templates/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="68" column="34" lean-forward="true" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/_templates/main_header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="526">
@@ -869,10 +825,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/style.css">
+    <entry file="file://$PROJECT_DIR$/application/views/_templates/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="106" column="87" selection-start-line="106" selection-start-column="87" selection-end-line="106" selection-end-column="87" />
+        <state relative-caret-position="442">
+          <caret line="68" column="34" lean-forward="true" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
         </state>
       </provider>
     </entry>
