@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b180b7d7-75d9-409e-8fa4-201889640b11" name="Default Changelist" comment="" />
+    <list default="true" id="b180b7d7-75d9-409e-8fa4-201889640b11" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/application/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/config.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,11 +83,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="functions.php" pinned="true" current-in-tab="true">
+      <file leaf-file-name="functions.php" pinned="true" current-in-tab="false">
         <entry file="remoteDeploymentFS://&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/functions.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="319">
               <caret line="367" column="25" selection-start-line="367" selection-start-column="25" selection-end-line="367" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/config/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" column="58" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/config/database.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
@@ -169,7 +189,6 @@
         <option value="$PROJECT_DIR$/application/views/user/dashboard.php" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.php" />
         <option value="$PROJECT_DIR$/application/controllers/Title.php" />
-        <option value="$PROJECT_DIR$/application/config/config.php" />
         <option value="$PROJECT_DIR$/application/views/user/encrypted_titles.php" />
         <option value="$PROJECT_DIR$/application/controllers/Encrypted.php" />
         <option value="$PROJECT_DIR$/application/models/Common.php" />
@@ -202,6 +221,7 @@
         <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/footer.php" />
         <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/assets/css/robolist.css" />
         <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/functions.php" />
+        <option value="$PROJECT_DIR$/application/config/config.php" />
       </list>
     </option>
   </component>
@@ -320,7 +340,7 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/streams" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1400" />
@@ -433,15 +453,15 @@
       <workItem from="1545033817239" duration="48456000" />
       <workItem from="1545307208355" duration="12030000" />
       <workItem from="1545382999029" duration="10525000" />
-      <workItem from="1545638394091" duration="10707000" />
+      <workItem from="1545638394091" duration="11898000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="298000000" />
+    <option name="totallyTimeSpent" value="299191000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="11" />
@@ -491,13 +511,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/views/post/title.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../foodhub/application/views/admin/categories.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -706,13 +719,6 @@
     <entry file="file://$PROJECT_DIR$/application/config/constants.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/config/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="544" column="61" selection-start-line="544" selection-start-column="61" selection-end-line="544" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/post/hidden_feedbacks.php" />
     <entry file="file://$PROJECT_DIR$/application/views/user/encrypted_titles.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -829,6 +835,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="68" column="34" lean-forward="true" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="58" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
         </state>
       </provider>
     </entry>
