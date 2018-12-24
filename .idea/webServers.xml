@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="747cdbeb-b57f-425c-871f-04cd3ee638ff" name="Guideble" url="http://124.47.158.69">
+        <fileTransfer host="124.47.158.69" port="22" rootFolder="/var/www/html/guideable" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="347fb9c5-02c8-49b6-a0be-98a2d943f092" name="Arc Lighting" url="http://go-performance.ca">
+        <fileTransfer host="go-performance.ca" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="aa9ae8a7-16c2-46f2-966c-eb5930851729" name="Locus Review" url="http://locusreview.com">
+        <fileTransfer host="locusreview.com" port="21" rootFolder="/public_html/staging">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -68,19 +68,14 @@ foreach ($feedbacks as $row) { ?>
             <i class="fa fa-caret-down dropdown" aria-hidden="true" style="float: right; cursor: pointer"></i>
             <ul class="dropdown_options" style="display: none">
                 <?php if (!empty($this->session->userdata['mec_user']['id']) && $row['user_id'] == $this->session->userdata['mec_user']['id']) { ?>
-                    <li><a href="#" class="hide_feedback_post"><i class="fa fa-eye-slash"></i> Hide</a></li>
-                    <li><a href="#" data-action="edit" class="edit_feedback" data-feedbackid="<?= $row['id']; ?>"><i
-                                    class="fa fa-edit"></i> Edit</a></li>
-                    <!--                    <li><a href="--><? //= site_url('post/edit/' . $row['id']); ?><!--" data-action="edit" class="edit_feedback"><i class="fa fa-edit"></i> Edit</a></li>-->
-                    <li><a href="#" class="delete_feedback_post"><i class="fa fa-ban"></i> Delete</a></li>
-                    <!--                    <li><a href="#" class="hide_feedback_post">--><? //= ($row['is_hidden'] == 0) ? 'Hide' : 'UnHide' ?><!--</a></li>-->
+                    <li><a href="#" class="hide_feedback_post"><img src="<?= base_url() ?>/assets/icons/new_icons/1.png" /> Hide this Title</a></li>
+                    <hr/>
+                    <li><a href="#" data-action="edit" class="edit_feedback" data-feedbackid="<?= $row['id']; ?>"><img src="<?= base_url() ?>/assets/icons/new_icons/5.png" /> Edit Feedback</a></li>
+                    <li><a href="#" class="delete_feedback_post"><img src="<?= base_url() ?>/assets/icons/new_icons/6.png" /> Delete Feedback</a></li>
                 <?php } else { ?>
-                    <li><a href="#" class="hide_title" data-titleid="<?= $row['title_id']; ?>"><i
-                                    class="fa fa-eye-slash"></i> Hide This Title</a></li>
-                    <li><a href="#" class="hide_all_user_feedbacks"><i class="fa fa-eye-slash"></i> Hide all feedbacks
-                            of <?= lcfirst($row['name']); ?> </a></li>
-                    <li><a href="#" class="report_feedback" data-feedbackid="<?= $row['id']; ?>"
-                           data-titleid="<?= $row['title_id']; ?>"><i class="fa fa-file"></i> Report</a></li>
+                    <li><a href="#" class="hide_title" data-titleid="<?= $row['title_id']; ?>"><img src="<?= base_url() ?>/assets/icons/new_icons/1.png" /> Hide This Title</a></li>
+                    <li><a href="#" class="hide_all_user_feedbacks"><img src="<?= base_url() ?>/assets/icons/new_icons/3.png" /> Hide <?= lcfirst($row['name']); ?> Feedbacks</a></li>
+                    <li><a href="#" class="report_feedback" data-feedbackid="<?= $row['id']; ?>" data-titleid="<?= $row['title_id']; ?>"><img src="<?= base_url() ?>/assets/icons/new_icons/4.png" /> Report this Feedback</a></li>
                 <?php } ?>
             </ul>
 

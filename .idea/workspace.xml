@@ -3,11 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b180b7d7-75d9-409e-8fa4-201889640b11" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/models/Common.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/models/Common.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/parts/create-post-widget.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/parts/create-post-widget.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/_templates/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/_templates/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/_templates/main_header.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/_templates/main_header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/views/parts/create-title-widget.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/parts/create-title-widget.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/views/post/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/post/ajax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -88,63 +88,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Post.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/Post.php">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="1174" selection-start-line="1174" selection-end-line="1174" />
+            <state relative-caret-position="219">
+              <caret line="106" column="87" selection-start-line="106" selection-start-column="87" selection-end-line="106" selection-end-column="87" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/User.php">
+      <file leaf-file-name="create-title-widget.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/parts/create-title-widget.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="281" selection-start-line="281" selection-end-line="281" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Common.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/models/Common.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="2327" column="25" lean-forward="true" selection-start-line="2327" selection-start-column="25" selection-end-line="2327" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajax.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/post/ajax.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="957" column="101" lean-forward="true" selection-start-line="957" selection-start-column="101" selection-end-line="957" selection-end-column="101" />
+            <state relative-caret-position="51">
+              <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
               <folding>
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#3;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#0;n#div#3;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#3;n#!!top" expanded="true" />
-                <element signature="e#27#33#1" expanded="true" />
-                <element signature="e#79#85#0" expanded="true" />
-                <element signature="e#85#91#0" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/post/edit.php">
+      <file leaf-file-name="main_header.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/_templates/main_header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="80" column="7" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
+            <state relative-caret-position="526">
+              <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#header#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/_templates/header.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="68" column="34" lean-forward="true" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -161,36 +146,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ajax</find>
-      <find>dash</find>
-      <find>adBa</find>
-      <find>getFeedbacks</find>
-      <find>post-address</find>
-      <find>location_field_id</find>
-      <find>latitude</find>
-      <find>get_loca</find>
-      <find>https://maps.googleapis.com/maps/api/js?key=AIzaSyDktEtV_Y5KnUIOEzTYs9UoLKGyinVdLQw&amp;libraries=places&amp;callback=initMap</find>
-      <find>tagged</find>
-      <find>post-name</find>
-      <find>friendname</find>
-      <find>$q</find>
-      <find>display: block</find>
-      <find>usersAutocompelte</find>
-      <find>tagging</find>
-      <find>user-search-list</find>
-      <find>remove-friend</find>
-      <find>remove-friends</find>
-      <find>ui-menu-item</find>
-      <find>feedback_img</find>
-      <find>image</find>
-      <find>video</find>
-      <find>feedbackimg</find>
-      <find>feedback-images</find>
       <find>data-image_id</find>
       <find>update</find>
       <find>$this-&gt;common-&gt;update</find>
       <find>url</find>
       <find>json_encode</find>
+      <find>Quiz</find>
+      <find>popup</find>
+      <find>jQuer</find>
+      <find>wp_enqueue_script</find>
+      <find>jQuery</find>
+      <find>click</find>
+      <find>body</find>
+      <find>Open a Support Ticket</find>
+      <find>init</find>
+      <find>wp</find>
+      <find>role</find>
+      <find>current_user</find>
+      <find>redirect</find>
+      <find>http</find>
+      <find>.logo img</find>
+      <find>top-bar</find>
+      <find>owl</find>
+      <find>front-product</find>
+      <find>sign</find>
+      <find>addlisting</find>
+      <find>log-in</find>
+      <find>appl</find>
+      <find>user-list</find>
+      <find>.post-btn</find>
+      <find>font</find>
     </findStrings>
     <replaceStrings>
       <replace>remove-friends</replace>
@@ -201,6 +186,7 @@
       <dir>C:\xampp\htdocs\feedbacker_new\application\config</dir>
       <dir>C:\xampp\htdocs\feedbacker_new\application</dir>
       <dir>C:\xampp\htdocs\feedbacker_new</dir>
+      <dir>C:\xampp\htdocs\feedbacker_new\application\views</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -209,23 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2018_09_17_005434_create_surveyors_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/SurveyController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/survey-result.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/admin/controllers/survey-results.js" />
-        <option value="$PROJECT_DIR$/resources/views/admin/layouts/side-nav.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/index.blade.php" />
-        <option value="$PROJECT_DIR$/public/css/emojis.css" />
-        <option value="$PROJECT_DIR$/resources/views/admin/surveys.blade.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.txt" />
-        <option value="$PROJECT_DIR$/resources/views/viewSurvey.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/admin/controllers/surveys.js" />
-        <option value="$PROJECT_DIR$/public/js/viewSurvey.js" />
-        <option value="$PROJECT_DIR$/public/css/viewSurvey.css" />
-        <option value="$PROJECT_DIR$/.htaccess" />
-        <option value="$PROJECT_DIR$/application/views/user/survey-questions.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Survey.php" />
-        <option value="$PROJECT_DIR$/application/views/user/encrypted_survey_single.php" />
         <option value="$PROJECT_DIR$/application/views/post/title.php" />
         <option value="$PROJECT_DIR$/application/controllers/admin/Feedbacks.php" />
         <option value="$PROJECT_DIR$/application/views/admin/feedbacks/report_feedbacks.php" />
@@ -233,7 +202,6 @@
         <option value="$PROJECT_DIR$/application/views/parts/user_profile_card.php" />
         <option value="$PROJECT_DIR$/application/views/user/profile.php" />
         <option value="$PROJECT_DIR$/assets/css/common.css" />
-        <option value="$PROJECT_DIR$/application/views/_templates/header.php" />
         <option value="$PROJECT_DIR$/application/views/user/friends.php" />
         <option value="$PROJECT_DIR$/application/views/admin/_templates/main_sidebar.php" />
         <option value="$PROJECT_DIR$/application/views/post/create.php" />
@@ -242,16 +210,13 @@
         <option value="$PROJECT_DIR$/application/controllers/user_profile.php" />
         <option value="$PROJECT_DIR$/application/views/user/show_friend_list.php" />
         <option value="$PROJECT_DIR$/application/views/post/hidden_feedbacks.php" />
-        <option value="$PROJECT_DIR$/application/views/_templates/main_header.php" />
         <option value="$PROJECT_DIR$/application/views/user/feedbacks.php" />
         <option value="$PROJECT_DIR$/application/controllers/UserProfile.php" />
         <option value="$PROJECT_DIR$/application/views/user/friend_profile.php" />
         <option value="$PROJECT_DIR$/application/views/user/dashboard.php" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.php" />
         <option value="$PROJECT_DIR$/application/controllers/Title.php" />
-        <option value="$PROJECT_DIR$/assets/css/style.css" />
         <option value="$PROJECT_DIR$/application/config/config.php" />
-        <option value="$PROJECT_DIR$/application/views/parts/create-title-widget.php" />
         <option value="$PROJECT_DIR$/application/views/user/encrypted_titles.php" />
         <option value="$PROJECT_DIR$/application/controllers/Encrypted.php" />
         <option value="$PROJECT_DIR$/application/models/Common.php" />
@@ -259,7 +224,28 @@
         <option value="$PROJECT_DIR$/application/views/parts/create-post-widget.php" />
         <option value="$PROJECT_DIR$/application/views/post/edit.php" />
         <option value="$PROJECT_DIR$/application/controllers/Post.php" />
+        <option value="&lt;747cdbeb-b57f-425c-871f-04cd3ee638ff&gt;/wp-content/themes/html5blank-stable/header.php" />
+        <option value="&lt;747cdbeb-b57f-425c-871f-04cd3ee638ff&gt;/wp-content/themes/html5blank-stable/learnpress/global/form-login.php" />
+        <option value="&lt;747cdbeb-b57f-425c-871f-04cd3ee638ff&gt;/wp-content/themes/html5blank-stable/footer.php" />
+        <option value="&lt;747cdbeb-b57f-425c-871f-04cd3ee638ff&gt;/wp-content/themes/html5blank-stable/style.css" />
+        <option value="&lt;747cdbeb-b57f-425c-871f-04cd3ee638ff&gt;/wp-content/themes/html5blank-stable/learnpress/profile/content.php" />
+        <option value="&lt;747cdbeb-b57f-425c-871f-04cd3ee638ff&gt;/wp-content/plugins/instructor_subscriptions/includes/instructor-subscriptions.php" />
+        <option value="&lt;347fb9c5-02c8-49b6-a0be-98a2d943f092&gt;/wp-content/themes/arc/woocommerce/single-product/tabs/additional-information.php" />
+        <option value="&lt;347fb9c5-02c8-49b6-a0be-98a2d943f092&gt;/wp-content/themes/arc/header.php" />
+        <option value="&lt;347fb9c5-02c8-49b6-a0be-98a2d943f092&gt;/wp-content/themes/arc/footer.php" />
+        <option value="&lt;347fb9c5-02c8-49b6-a0be-98a2d943f092&gt;/wp-content/themes/arc/style.css" />
+        <option value="&lt;347fb9c5-02c8-49b6-a0be-98a2d943f092&gt;/wp-content/themes/arc/front-page.php" />
+        <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/.htaccess" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.html" />
+        <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/single.php" />
+        <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-config.php" />
+        <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/header.php" />
+        <option value="&lt;aa9ae8a7-16c2-46f2-966c-eb5930851729&gt;/wp-content/themes/robolist-lite/functions.php" />
         <option value="$PROJECT_DIR$/application/views/post/ajax.php" />
+        <option value="$PROJECT_DIR$/application/views/parts/create-title-widget.php" />
+        <option value="$PROJECT_DIR$/application/views/_templates/main_header.php" />
+        <option value="$PROJECT_DIR$/application/views/_templates/header.php" />
+        <option value="$PROJECT_DIR$/assets/css/style.css" />
       </list>
     </option>
   </component>
@@ -381,14 +367,15 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1400" />
+    <option name="height" value="820" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -405,18 +392,6 @@
               <item name="feedbacker_new" type="b2602c69:ProjectViewProjectNode" />
               <item name="feedbacker_new" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="feedbacker_new" type="b2602c69:ProjectViewProjectNode" />
-              <item name="feedbacker_new" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="feedbacker_new" type="b2602c69:ProjectViewProjectNode" />
-              <item name="feedbacker_new" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -424,54 +399,35 @@
               <item name="feedbacker_new" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="parts" type="462c0819:PsiDirectoryNode" />
+              <item name="_templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="feedbacker_new" type="b2602c69:ProjectViewProjectNode" />
               <item name="feedbacker_new" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="post" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="feedbacker_new" type="b2602c69:ProjectViewProjectNode" />
               <item name="feedbacker_new" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="feedbacker_new" type="b2602c69:ProjectViewProjectNode" />
-              <item name="feedbacker_new" type="462c0819:PsiDirectoryNode" />
-              <item name="uploads" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="feedbacker_new" type="b2602c69:ProjectViewProjectNode" />
-              <item name="feedbacker_new" type="462c0819:PsiDirectoryNode" />
-              <item name="uploads" type="462c0819:PsiDirectoryNode" />
-              <item name="feedback" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="feedbacker_new" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-            </path>
-            <path>
-              <item name="feedbacker_new" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP&#10;TEXT" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dev" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="HTML&#10;PHP&#10;TEXT" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../profile-builder" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -518,12 +474,15 @@
       <workItem from="1544277729342" duration="496000" />
       <workItem from="1544474564848" duration="35667000" />
       <workItem from="1544559825740" duration="18395000" />
-      <workItem from="1545033817239" duration="29558000" />
+      <workItem from="1545033817239" duration="48456000" />
+      <workItem from="1545307208355" duration="12030000" />
+      <workItem from="1545382999029" duration="10525000" />
+      <workItem from="1545638394091" duration="6106000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245840000" />
+    <option name="totallyTimeSpent" value="293399000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -533,9 +492,10 @@
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" weight="0.32885906" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="bottom" id="Run" order="7" />
       <window_info id="npm" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="7" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32885906" />
+      <window_info anchor="right" id="Remote Host" order="3" weight="0.2575" />
       <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.2325" />
       <window_info anchor="bottom" id="Docker" order="4" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="0" />
@@ -575,13 +535,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../feedbacker/application/views/_templates/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="70" column="90" lean-forward="true" selection-start-line="68" selection-start-column="4" selection-end-line="70" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/post/title.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -667,13 +620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/_templates/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="134" column="118" selection-start-line="134" selection-start-column="118" selection-end-line="134" selection-end-column="118" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/parts/friends_list.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -725,13 +671,6 @@
     <entry file="file://$PROJECT_DIR$/application/controllers/Post-o.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/_templates/main_header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="376" selection-start-line="376" selection-end-line="376" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/user/feedbacks.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
@@ -764,10 +703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="93" column="58" lean-forward="true" selection-start-line="93" selection-start-column="58" selection-end-line="93" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -807,13 +742,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="687" column="10" selection-start-line="687" selection-start-column="10" selection-end-line="687" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/config/autoload.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1691" />
@@ -830,13 +758,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/post/hidden_feedbacks.php" />
-    <entry file="file://$PROJECT_DIR$/application/views/post/create_encrypted.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="44" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/user/encrypted_titles.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
@@ -851,13 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/parts/create-title-widget.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="83" column="78" selection-start-line="83" selection-start-column="78" selection-end-line="83" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="509">
@@ -869,23 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7667">
           <caret line="451" column="102" selection-start-line="451" selection-start-column="89" selection-end-line="451" selection-end-column="102" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/post/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="80" column="7" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -903,22 +800,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/post/edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="80" column="7" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/post/create_encrypted.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25">
+          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="44" selection-end-column="74" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#2;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/post/ajax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="957" column="101" lean-forward="true" selection-start-line="957" selection-start-column="101" selection-end-line="957" selection-end-column="101" />
+        <state relative-caret-position="170">
+          <caret line="75" column="160" lean-forward="true" selection-start-line="75" selection-start-column="160" selection-end-line="75" selection-end-column="160" />
           <folding>
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#3;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#3;n#!!top" expanded="true" />
             <element signature="e#27#33#1" expanded="true" />
             <element signature="e#79#85#0" expanded="true" />
             <element signature="e#85#91#0" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/parts/create-title-widget.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="67" column="18" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#form#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/_templates/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="68" column="34" lean-forward="true" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/_templates/main_header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#header#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="106" column="87" selection-start-line="106" selection-start-column="87" selection-end-line="106" selection-end-column="87" />
         </state>
       </provider>
     </entry>

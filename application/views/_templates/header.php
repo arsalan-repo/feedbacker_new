@@ -62,7 +62,7 @@ list($og_width, $og_height, $og_image_type, $of_attr) = getimagesize($meta['imag
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/flags.css'; ?>" />
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/multiple-emails.css'; ?>" />
-	
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<?php 
 	if(isset($this->session->userdata['user_lang'])){
 		$user_lang = $this->session->userdata['user_lang'];

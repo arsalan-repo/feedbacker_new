@@ -15,7 +15,7 @@
         font-weight: bold;
     }
     .panel-body{
-        padding: 10px 10px 60px 10px;
+        padding: 10px 10px 30px 10px;
     }
     .form-element input[type="text"], .form-element textarea{
         display: block;
@@ -53,6 +53,42 @@
     }
     label{
         width: auto;
+    }
+    .user-list{
+        margin: 30px 0px 0px;
+        display: block;
+        position: absolute;
+        right: 647px;
+        width: 140px;
+        bottom: 240px;
+    }
+    .user-group{
+        position: absolute;
+        width: 8%;
+        bottom: 230px;
+        right: 500px;
+    }
+    .post-btn{
+        float: none!important;
+    }
+    .post-btn-block{
+        margin: 30px 10px 0 10px!important;
+    }
+    ul#select2-linked-users-results li {
+        color: #000;
+    }
+    ul#select2-linked-users-results{
+        background: #d8d8d8;
+    }
+    .arrow-down {
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 8px solid #8a8a98;
+        display: block;
+        margin: auto;
+        margin-bottom: 2px;
     }
 </style>
 <div class="create-title">
@@ -108,12 +144,13 @@
         </div>
         <div class="form-element" style="padding: 30px 0;">
             <div class="user-wrapper" style="width:100%;">
-                <div class="user-list" style="margin-bottom:20px;display: none;margin: 30px 0px 0px;">
-                    <label style="padding-bottom:10px;"><?php echo $this->lang->line('link_users'); ?></label>
+                <div class="user-list" style="display: none;">
+                    <div class="arrow-down"></div>
                     <select id="linked-users" class="js-data-example-ajax form-control" name="users[]" multiple="true" style="width:100%;" placeholder="<?php echo $this->lang->line('enter_user_name_or_email_address'); ?>"></select>
                 </div>
                 <div class="user-group" style="display: none;margin: 30px 0px 0px;">
-                    <p style="padding-bottom:10px;"><?php echo $this->lang->line('select_from_list'); ?> <span class="pull-right" style="display:block;" id="create-user-group"><?php echo $this->lang->line('add_new_list'); ?></span> </p>
+                    <div class="arrow-down"></div>
+                    <p style="padding-bottom:10px;"><span class="pull-right" style="display:block;" id="create-user-group"><?php echo $this->lang->line('add_new_list'); ?></span> </p>
                     <select class="select2-single form-control" name="user_groups" id="user_groups" style="width:100%; padding:10px;" placeholder="Select List">
                         <option value=""><?php echo $this->lang->line('select_group'); ?></option>
                         <?php foreach($groups as $group): ?>
@@ -139,7 +176,6 @@
             <label style="padding-bottom:10px;"><?php echo $this->lang->line('select_user'); ?></label>
             <select class="js-data-example-ajax text ui-widget-content ui-corner-all" id="group-users" name="users[]" multiple="true" style="width:100%;" placeholder="<?php echo $this->lang->line('enter_user_name_or_email'); ?>"></select>
         </div>
-
         <!-- Allow form submission with keyboard without duplicating the dialog button -->
         <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
     </form>

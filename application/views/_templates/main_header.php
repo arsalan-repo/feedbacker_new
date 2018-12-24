@@ -58,13 +58,16 @@ $country=empty($user_country)? 'jo': strtolower($user_country);
 		</script>
       </div>
 	 
-	<div class="header-create-encrypted"><a href="<?php echo site_url('user/encrypted_titles'); ?>"><?php echo $this->lang->line('encrypted_titles'); ?></a></div> 
-    <div class="header-create-post"><a href="<?php echo site_url('post/create'); ?>"><?php echo $this->lang->line('create_post'); ?></a></div>
+	<div class="header-create-encrypted"><a href="<?php echo site_url('user/encrypted_titles'); ?>">Private Title</a></div>
+	<div class="header-notification" style="margin: -10px 0;"><a href="#"><img src="<?= base_url() ?>/assets/icons/new_icons/message.png" /></a></div>
+<!--    <div class="header-create-post"><a href="--><?php //echo site_url('post/create'); ?><!--">--><?php //echo $this->lang->line('create_post'); ?><!--</a></div>-->
     <?php if(isset($this->session->userdata['mec_user'])): ?>
 	<div class="header-notification" id="header-notification">       
         <a href="<?php echo site_url('user/notifications'); ?>" style="">
 		<span id="notification-count" class="notification-count <?php if(isset($notification_count) && $notification_count>0) echo 'show'; else echo 'hide'; ?>"></span>
-		<img src="<?php echo base_url().'assets/images/notification-icon.png'; ?>" alt="" /></a>
+<!--		<img src="--><?php //echo base_url().'assets/images/notification-icon.png'; ?><!--" alt="" />-->
+            <i class="fas fa-bell"></i>
+        </a>
     </div>
 	<?php endif; ?>
     
@@ -373,7 +376,7 @@ $country=empty($user_country)? 'jo': strtolower($user_country);
 	
 
     <ul>
-		<li><a href="<?php echo site_url('user/encrypted_titles'); ?>"><?php echo $this->lang->line('encrypted_titles'); ?></a></li> 
+		<li><a href="<?php echo site_url('user/encrypted_titles'); ?>">Private Title</a></li>
 		<!--<li><a href="<?php echo site_url('user/private_titles'); ?>">Private Titles</a></li> -->
        <li><a href="<?php echo site_url('user/profile'); ?>"><?php echo $this->lang->line('profile'); ?></a></li> 
        <li><a href="<?php echo site_url('user/friends'); ?>">
