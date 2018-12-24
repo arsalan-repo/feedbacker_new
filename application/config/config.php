@@ -27,7 +27,7 @@ if($_SERVER['HTTP_HOST']=="localhost") {
 	$config['base_url'] = 'http://localhost/feedbacker_new/';
 	$config['upload_url'] = 'http://localhost/feedbacker_new/uploads/';
 } else {
-	$config['base_url'] = 'https://feedbacker.me/index.php';
+	$config['base_url'] = 'https://feedbacker.me/';
 	$config['upload_url'] = 'https://feedbacker.me/uploads/';	
 }
 
