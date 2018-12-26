@@ -45,11 +45,15 @@
     }
     .custom-file-upload {
         display: inline-block;
-        padding: 6px 12px;
+        padding: 8px 12px;
         cursor: pointer;
         border-radius: 5px;
-        background: #f5f6f7;
-        width: 135px;
+        background: #d8d8d8;
+        width: 150px;
+    }
+    .custom-file-upload img{
+        margin: -5px 0px;
+        width: 25px;
     }
     label{
         width: auto;
@@ -90,6 +94,21 @@
         margin: auto;
         margin-bottom: 2px;
     }
+    .half-width img{
+        margin-right: 10px;
+        margin: -5px 10px -6px -4px;
+        width: 26px;
+    }
+    .half-width label{
+        width: 150px;
+        background: #d8d8d8;
+        border: 1px solid #97958f;
+        padding: 5px 5px 0 5px;
+        margin: 10px 30px 25px 0px;
+    }
+    .half-width {
+        margin: 6px 20px 0px 0px;
+    }
 </style>
 <div class="create-title">
     <div class="panel-header">
@@ -101,15 +120,22 @@
         echo form_open_multipart('encrypted/create', $attributes);
         ?>
         <div class="form-element">
+            <div class="half-width">
+                <label class="private_title">
+                    <img src="<?= base_url() ?>/assets/icons/new_icons/lock.png" /> <span>Private Title</span>
+                </label>
+            </div>
+            <div class="half-width">
+                <label class="questionnaire">
+                    <img src="<?= base_url() ?>/assets/icons/new_icons/question.png" style="width: 23px;"/> <span>Questionnaire</span>
+                </label>
+            </div>
+        </div>
+        <div class="form-element">
             <input type="text" name="title" id="title" placeholder="Enter Encrypted Title" required />
         </div>
         <div class="form-element">
-            <label>Is it questionnaire?</label>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <input type="checkbox" name="is_survey" id="is_survey" style="width:auto; margin:4px 5px 0 0;" /> Yes
+            <input type="checkbox" name="is_survey" id="is_survey" style="display: none"/>
         </div>
         <div class="form-element">
             <textarea name="feedback_cont" id="feedback_cont" placeholder="Your Feed" rows="10" required></textarea>
@@ -120,25 +146,25 @@
             <div id="pdf-preview-wrapper" style="display:inline-block;"></div>
         </div>
         <div class="form-element" style="width: 100%;margin: 20px 0 0 0;">
-            <div class="quarter-width">
+            <div class="quarter-width hide-this">
                 <label for="file-upload" class="custom-file-upload">
-                    <i class="fa fa-camera"></i> Picture/Video
+                    <img src="<?= base_url() ?>/assets/icons/new_icons/picture_video_2.png" /> <span>Picture/Video</span>
                 </label>
             </div>
-            <div class="quarter-width">
+            <div class="quarter-width hide-this">
                 <label for="feedback_files" class="custom-file-upload">
-                    <i class="fa fa-file-pdf-o"></i> Documents
+                    <img src="<?= base_url() ?>/assets/icons/new_icons/pdf_2.png" /> <span>Documents</span>
                 </label>
                 <input name="feedback_files[]" id="feedback_files" multiple type="file" style="float: none"/>
             </div>
             <div class="quarter-width">
                 <label for="file-upload" class="custom-file-upload linkUser">
-                    <i class="fa fa-user"></i> Link Users
+                    <img src="<?= base_url() ?>/assets/icons/new_icons/tagged_friends.png" /> <span> Link Users </span>
                 </label>
             </div>
             <div class="quarter-width">
                 <label for="file-upload" class="custom-file-upload linkGroup">
-                    <i class="fa fa-group"></i> Link Group
+                    <img src="<?= base_url() ?>/assets/icons/new_icons/group.png" /> <span> Link Group </span>
                 </label>
             </div>
         </div>
@@ -161,7 +187,7 @@
             </div>
         </div>
         <div class="post-btn-block" style="clear:both; width:100;">
-            <span class="post-btn"><?php echo $this->lang->line('post_enc'); ?></span>
+            <span class="post-btn">Create</span>
             <!--<span class="link-user-btn">Link Users</span>-->
         </div>
         <?php echo form_close(); ?>
@@ -467,4 +493,24 @@
 
         });
     }
+    
+    $('.questionnaire').click(function () {
+        $('#is_survey').attr('checked',true);
+        $('.hide-this').hide();
+        $('#feedback_cont').hide();
+        $('.user-list').css({'right':'943px','bottom':'360px'});
+        $('.user-group').css({'right':'805px','bottom':'345px'});
+        $('.post-btn-block').css({'float':'right'});
+        $('.panel-body').css({'margin':'10px 10px 150px 10px'});
+
+    })
+    $('.private_title').click(function () {
+        $('#is_survey').attr('checked',false);
+        $('.hide-this').show();
+        $('#feedback_cont').show();
+        $('.user-list').css({'right':'647px','bottom':'240px'});
+        $('.user-group').css({'right':'500px','bottom':'230px'});
+        $('.post-btn-block').css({'float':'none'});
+        $('.panel-body').css({'margin':'10px 10px 30px 10px'});
+    })
 </script>

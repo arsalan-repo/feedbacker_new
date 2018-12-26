@@ -1,3 +1,21 @@
+<style>
+    label.link_users, .link_group, .link_invites{
+        background: #d8d8d8;
+        width: 180px;
+        border: 1px solid #97958f;
+        border-radius: 5px;
+        padding: 5px;
+        cursor: pointer;
+        margin: 10px 80px;;
+    }
+    label.link_users img, .link_group img, .link_invites img{
+        margin: -10px 5px;
+        width: 32px;
+    }
+    label.link_users span, .link_group span, .link_invites span{
+        color : #000;
+    }
+</style>
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
@@ -175,7 +193,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 			 <?php endif; ?>
 			<?php if($is_title_owner): ?>
-			<div class="sidebar-widget">
+                <label class="link_users"><img src="<?= base_url() ?>/assets/icons/new_icons/tagged_friends.png" /> <span>Link new users</span></label>
+			<div class="sidebar-widget link_users_widget">
 				<h3><span><?php echo $this->lang->line('link_new_user'); ?></span></h3>
 				<div class="who-follow-block">					
 					<?php $attributes = array('id' => 'link-user-form');
@@ -192,7 +211,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php echo form_close(); ?>
 				</div>
 			</div>
-			<div class="sidebar-widget">
+                <label class="link_group"><img src="<?= base_url() ?>/assets/icons/new_icons/group.png" /> <span>Link Group</span></label>
+			<div class="sidebar-widget link_group_widget">
 				<h3><span><?php echo $this->lang->line('invite_your_friends'); ?></span></h3>
 				<div class="who-follow-block">
 					<?php
@@ -212,7 +232,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<?php echo form_close(); ?>
 				</div>
 			</div>
-			<div class="sidebar-widget">
+                <label class="link_invites"><img src="<?= base_url() ?>/assets/icons/new_icons/invites.png" /> <span>Send Invitation</span></label>
+			<div class="sidebar-widget link_invites_widget">
 				<h3><span>Invite Group </span>  <span class="pull-right" style="display:block;" id="create-user-group"><?php echo $this->lang->line('add_new_list'); ?></span></h3>
 				<div class="who-follow-block">
 					<?php
@@ -731,5 +752,19 @@ function imagePreview(input) {
 				
 		  });
 }
-</script>
 
+    $(document).ready(function () {
+        $('.link_users_widget').hide()
+        $('.link_group_widget').hide()
+        $('.link_invites_widget').hide()
+    });
+    $('.link_users').click(function () {
+        $('.link_users_widget').toggle()
+    });
+    $('.link_group').click(function () {
+        $('.link_group_widget').toggle()
+    });
+    $('.link_invites').click(function () {
+        $('.link_invites_widget').toggle()
+    });
+</script>
