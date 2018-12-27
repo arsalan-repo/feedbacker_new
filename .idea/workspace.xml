@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b180b7d7-75d9-409e-8fa4-201889640b11" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/parts/create-post-widget.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/parts/create-post-widget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/parts/create-title-widget.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/parts/create-title-widget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/views/user/encrypted_survey_single.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/views/user/encrypted_survey_single.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -140,8 +136,8 @@
       <file leaf-file-name="create-post-widget.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/parts/create-post-widget.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="241" column="18" selection-start-line="241" selection-start-column="18" selection-end-line="241" selection-end-column="18" />
+            <state relative-caret-position="679">
+              <caret line="244" column="20" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
@@ -491,16 +487,15 @@
       <workItem from="1545307208355" duration="12030000" />
       <workItem from="1545382999029" duration="10525000" />
       <workItem from="1545638394091" duration="19754000" />
-      <workItem from="1545836151804" duration="9389000" />
+      <workItem from="1545836151804" duration="9958000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="316436000" />
+    <option name="totallyTimeSpent" value="317005000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="11" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" weight="0.3285151" />
@@ -879,8 +874,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/parts/create-post-widget.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="241" column="18" selection-start-line="241" selection-start-column="18" selection-end-line="241" selection-end-column="18" />
+        <state relative-caret-position="679">
+          <caret line="244" column="20" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
           <folding>
             <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
